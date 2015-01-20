@@ -34,8 +34,10 @@ namespace PhotoToss
             tossBtn = FindViewById<Button>(Resource.Id.tossButton);
             imageView = FindViewById<ImageView>(Resource.Id.aztekView);
 
-            tossBtn.Click += async delegate
+
+            tossBtn.Click +=  delegate
             {
+                tossBtn.Text = "cancel toss";
                 BarcodeWriter writer = new BarcodeWriter();
                 writer.Format = BarcodeFormat.AZTEC;
                 writer.Renderer = new BitmapRenderer();
@@ -46,6 +48,7 @@ namespace PhotoToss
                 string baseURL = "http://phototoss.com/share/";
                 string guid = "545d0e4fe4b04019b5d10ee4";
                 string url = baseURL + guid;
+                url = "http://lh5.ggpht.com/yizAvQIwFWLXFHxj8mTE0WF_WIL2q-yTwkplk2AzQ7wYU9sUfEATajem6T5TURImyL8KMJxvp252JiCExlvcUFSZWZn7k5uL";
 
                 writer.Options.Height = 240;
                 writer.Options.Width = 240;

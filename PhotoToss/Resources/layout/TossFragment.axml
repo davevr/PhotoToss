@@ -4,22 +4,19 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:minWidth="25px"
-    android:minHeight="25px">
-    <TextView
-        android:text="Toss Page"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView1" />
-    <Button
-        android:text="Toss"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/tossButton" />
+    android:minHeight="25px"
+    android:background="@color/PT_dark_orange">
     <ImageView
-        android:src="@android:drawable/ic_menu_gallery"
+        android:src="@drawable/car"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:id="@+id/aztekView" />
+    <Button
+        android:text="Toss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tossButton"
+        android:background="@color/PT_light_teal"
+        android:layout_margin="16dp" />
 </LinearLayout>

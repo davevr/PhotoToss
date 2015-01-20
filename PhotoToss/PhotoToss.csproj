@@ -76,11 +76,24 @@
     <Compile Include="Activities\ProfileFragment.cs" />
     <Compile Include="Activities\StatsFragment.cs" />
     <Compile Include="Activities\TossActivity.cs" />
+    <Compile Include="Activities\UploadActivity.cs" />
+    <Compile Include="Core\PhotoRecord.cs" />
+    <Compile Include="Core\PhotoTossRest.cs" />
+    <Compile Include="Core\User.cs" />
+    <Compile Include="HelperClasses\StreamHelper.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\fonts\RammettoOne-Regular.ttf" />
+    <AndroidAsset Include="Assets\fonts\SourceCodePro-Black.ttf" />
+    <AndroidAsset Include="Assets\fonts\SourceCodePro-Bold.ttf" />
+    <AndroidAsset Include="Assets\fonts\SourceCodePro-ExtraLight.ttf" />
+    <AndroidAsset Include="Assets\fonts\SourceCodePro-Light.ttf" />
+    <AndroidAsset Include="Assets\fonts\SourceCodePro-Medium.ttf" />
+    <AndroidAsset Include="Assets\fonts\SourceCodePro-Regular.ttf" />
+    <AndroidAsset Include="Assets\fonts\SourceCodePro-Semibold.ttf" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
@@ -108,6 +121,15 @@
     <AndroidResource Include="Resources\layout\ZxingOverlay.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\DrawerListItem.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\UploadActivity.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\photoGridCell.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -116,20 +138,33 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Icon.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
-    <AndroidResource Include="Resources\drawable\bigIcon.png" />
+    <AndroidResource Include="Resources\menu\MainMenu.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\iconNoBorder.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_announcement_black_48dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_toss.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_delete_black_48dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_catch.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_help.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_restore_black_48dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_room_black_48dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_settings.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_star_rate_black_48dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_supervisor_account_black_48dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_camera.png" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\drawable\car.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="restsharp">
       <Visible>False</Visible>
-      <Version>104.4.0.1</Version>
+      <Version>105.0.1.0</Version>
     </XamarinComponentReference>
     <XamarinComponentReference Include="servicestacktext">
       <Visible>False</Visible>
-      <Version>3.9.61.0</Version>
+      <Version>3.9.61.1</Version>
     </XamarinComponentReference>
     <XamarinComponentReference Include="xamandroidsupportv4-18">
       <Visible>False</Visible>
@@ -141,9 +176,10 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="zxing.net.mobile">
       <Visible>False</Visible>
-      <Version>1.4.7</Version>
+      <Version>1.4.7.1</Version>
     </XamarinComponentReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.

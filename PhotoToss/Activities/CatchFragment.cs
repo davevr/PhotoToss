@@ -12,14 +12,15 @@ using Android.Views;
 using Android.Widget;
 
 namespace PhotoToss
-{
-    public class CatchFragment : Fragment
+{  
+    [Activity(Label = "Catch a Photo")]
+    public class CatchFragment : Activity
     {
-        public override void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(savedInstanceState);
+            base.OnCreate(bundle);
 
-            // Create your fragment here
+            SetContentView(Resource.Layout.CatchFragment);
         }
     }
 }

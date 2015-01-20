@@ -617,29 +617,47 @@ namespace PhotoToss
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f060031
-			public const int abc_background_cache_hint_selector_material_dark = 2131099697;
+			// aapt resource value: 0x7f060036
+			public const int PT_black = 2131099702;
 			
 			// aapt resource value: 0x7f060032
-			public const int abc_background_cache_hint_selector_material_light = 2131099698;
+			public const int PT_dark_orange = 2131099698;
+			
+			// aapt resource value: 0x7f060034
+			public const int PT_dark_teal = 2131099700;
+			
+			// aapt resource value: 0x7f060031
+			public const int PT_light_orange = 2131099697;
+			
+			// aapt resource value: 0x7f060033
+			public const int PT_light_teal = 2131099699;
+			
+			// aapt resource value: 0x7f060035
+			public const int PT_white = 2131099701;
+			
+			// aapt resource value: 0x7f060037
+			public const int abc_background_cache_hint_selector_material_dark = 2131099703;
+			
+			// aapt resource value: 0x7f060038
+			public const int abc_background_cache_hint_selector_material_light = 2131099704;
 			
 			// aapt resource value: 0x7f060000
 			public const int abc_input_method_navigation_guard = 2131099648;
 			
-			// aapt resource value: 0x7f060033
-			public const int abc_primary_text_disable_only_material_dark = 2131099699;
+			// aapt resource value: 0x7f060039
+			public const int abc_primary_text_disable_only_material_dark = 2131099705;
 			
-			// aapt resource value: 0x7f060034
-			public const int abc_primary_text_disable_only_material_light = 2131099700;
+			// aapt resource value: 0x7f06003a
+			public const int abc_primary_text_disable_only_material_light = 2131099706;
 			
-			// aapt resource value: 0x7f060035
-			public const int abc_primary_text_material_dark = 2131099701;
+			// aapt resource value: 0x7f06003b
+			public const int abc_primary_text_material_dark = 2131099707;
 			
-			// aapt resource value: 0x7f060036
-			public const int abc_primary_text_material_light = 2131099702;
+			// aapt resource value: 0x7f06003c
+			public const int abc_primary_text_material_light = 2131099708;
 			
-			// aapt resource value: 0x7f060037
-			public const int abc_search_url_text = 2131099703;
+			// aapt resource value: 0x7f06003d
+			public const int abc_search_url_text = 2131099709;
 			
 			// aapt resource value: 0x7f060001
 			public const int abc_search_url_text_normal = 2131099649;
@@ -650,11 +668,11 @@ namespace PhotoToss
 			// aapt resource value: 0x7f060003
 			public const int abc_search_url_text_selected = 2131099651;
 			
-			// aapt resource value: 0x7f060038
-			public const int abc_secondary_text_material_dark = 2131099704;
+			// aapt resource value: 0x7f06003e
+			public const int abc_secondary_text_material_dark = 2131099710;
 			
-			// aapt resource value: 0x7f060039
-			public const int abc_secondary_text_material_light = 2131099705;
+			// aapt resource value: 0x7f06003f
+			public const int abc_secondary_text_material_light = 2131099711;
 			
 			// aapt resource value: 0x7f060004
 			public const int accent_material_dark = 2131099652;
@@ -1100,10 +1118,43 @@ namespace PhotoToss
 			public const int abc_textfield_search_material = 2130837554;
 			
 			// aapt resource value: 0x7f020033
-			public const int bigIcon = 2130837555;
+			public const int car = 2130837555;
 			
 			// aapt resource value: 0x7f020034
-			public const int Icon = 2130837556;
+			public const int ic_announcement_black_48dp = 2130837556;
+			
+			// aapt resource value: 0x7f020035
+			public const int ic_camera = 2130837557;
+			
+			// aapt resource value: 0x7f020036
+			public const int ic_catch = 2130837558;
+			
+			// aapt resource value: 0x7f020037
+			public const int ic_delete_black_48dp = 2130837559;
+			
+			// aapt resource value: 0x7f020038
+			public const int ic_help = 2130837560;
+			
+			// aapt resource value: 0x7f020039
+			public const int ic_restore_black_48dp = 2130837561;
+			
+			// aapt resource value: 0x7f02003a
+			public const int ic_room_black_48dp = 2130837562;
+			
+			// aapt resource value: 0x7f02003b
+			public const int ic_settings = 2130837563;
+			
+			// aapt resource value: 0x7f02003c
+			public const int ic_star_rate_black_48dp = 2130837564;
+			
+			// aapt resource value: 0x7f02003d
+			public const int ic_supervisor_account_black_48dp = 2130837565;
+			
+			// aapt resource value: 0x7f02003e
+			public const int ic_toss = 2130837566;
+			
+			// aapt resource value: 0x7f02003f
+			public const int iconNoBorder = 2130837567;
 			
 			static Drawable()
 			{
@@ -1117,6 +1168,33 @@ namespace PhotoToss
 		
 		public partial class Id
 		{
+			
+			// aapt resource value: 0x7f070059
+			public const int AboutBtn = 2131165273;
+			
+			// aapt resource value: 0x7f07004e
+			public const int AddTagBtn = 2131165262;
+			
+			// aapt resource value: 0x7f070057
+			public const int CatchButton = 2131165271;
+			
+			// aapt resource value: 0x7f070040
+			public const int ItemName = 2131165248;
+			
+			// aapt resource value: 0x7f070055
+			public const int MainMenu = 2131165269;
+			
+			// aapt resource value: 0x7f07004d
+			public const int NewTagText = 2131165261;
+			
+			// aapt resource value: 0x7f070056
+			public const int PhotoButton = 2131165270;
+			
+			// aapt resource value: 0x7f070058
+			public const int SettingsBtn = 2131165272;
+			
+			// aapt resource value: 0x7f07004f
+			public const int UploadBtn = 2131165263;
 			
 			// aapt resource value: 0x7f070031
 			public const int action_bar = 2131165233;
@@ -1163,17 +1241,17 @@ namespace PhotoToss
 			// aapt resource value: 0x7f07000f
 			public const int always = 2131165199;
 			
-			// aapt resource value: 0x7f070046
-			public const int aztekView = 2131165254;
+			// aapt resource value: 0x7f070048
+			public const int aztekView = 2131165256;
 			
 			// aapt resource value: 0x7f07000a
 			public const int beginning = 2131165194;
 			
-			// aapt resource value: 0x7f07004b
-			public const int buttonZxingFlash = 2131165259;
+			// aapt resource value: 0x7f070053
+			public const int buttonZxingFlash = 2131165267;
 			
-			// aapt resource value: 0x7f070041
-			public const int catchButton = 2131165249;
+			// aapt resource value: 0x7f070047
+			public const int captionText = 2131165255;
 			
 			// aapt resource value: 0x7f070029
 			public const int checkbox = 2131165225;
@@ -1181,8 +1259,8 @@ namespace PhotoToss
 			// aapt resource value: 0x7f070011
 			public const int collapseActionView = 2131165201;
 			
-			// aapt resource value: 0x7f07004c
-			public const int contentFrame = 2131165260;
+			// aapt resource value: 0x7f070054
+			public const int contentFrame = 2131165268;
 			
 			// aapt resource value: 0x7f07002f
 			public const int decor_content_parent = 2131165231;
@@ -1196,8 +1274,8 @@ namespace PhotoToss
 			// aapt resource value: 0x7f070009
 			public const int disableHome = 2131165193;
 			
-			// aapt resource value: 0x7f070043
-			public const int drawer_layout = 2131165251;
+			// aapt resource value: 0x7f070042
+			public const int drawer_layout = 2131165250;
 			
 			// aapt resource value: 0x7f070013
 			public const int dropdown = 2131165203;
@@ -1214,8 +1292,11 @@ namespace PhotoToss
 			// aapt resource value: 0x7f070028
 			public const int expanded_menu = 2131165224;
 			
-			// aapt resource value: 0x7f070044
-			public const int fragmentContainer = 2131165252;
+			// aapt resource value: 0x7f070043
+			public const int fragmentContainer = 2131165251;
+			
+			// aapt resource value: 0x7f070046
+			public const int frameLayout1 = 2131165254;
 			
 			// aapt resource value: 0x7f070019
 			public const int home = 2131165209;
@@ -1233,13 +1314,19 @@ namespace PhotoToss
 			public const int image = 2131165219;
 			
 			// aapt resource value: 0x7f070045
-			public const int left_drawer = 2131165253;
+			public const int imageView = 2131165253;
 			
-			// aapt resource value: 0x7f070047
-			public const int linearLayout1 = 2131165255;
+			// aapt resource value: 0x7f070041
+			public const int imagesView = 2131165249;
 			
-			// aapt resource value: 0x7f070049
-			public const int linearLayout2 = 2131165257;
+			// aapt resource value: 0x7f070044
+			public const int left_drawer = 2131165252;
+			
+			// aapt resource value: 0x7f07004c
+			public const int linearLayout1 = 2131165260;
+			
+			// aapt resource value: 0x7f070051
+			public const int linearLayout2 = 2131165265;
 			
 			// aapt resource value: 0x7f070001
 			public const int listMode = 2131165185;
@@ -1259,9 +1346,6 @@ namespace PhotoToss
 			// aapt resource value: 0x7f070000
 			public const int normal = 2131165184;
 			
-			// aapt resource value: 0x7f070042
-			public const int previewImage = 2131165250;
-			
 			// aapt resource value: 0x7f07001a
 			public const int progress_circular = 2131165210;
 			
@@ -1270,6 +1354,9 @@ namespace PhotoToss
 			
 			// aapt resource value: 0x7f07002b
 			public const int radio = 2131165227;
+			
+			// aapt resource value: 0x7f07004a
+			public const int scrollView1 = 2131165258;
 			
 			// aapt resource value: 0x7f070035
 			public const int search_badge = 2131165237;
@@ -1322,20 +1409,23 @@ namespace PhotoToss
 			// aapt resource value: 0x7f070002
 			public const int tabMode = 2131165186;
 			
+			// aapt resource value: 0x7f07004b
+			public const int tagsField = 2131165259;
+			
 			// aapt resource value: 0x7f07003f
 			public const int textView1 = 2131165247;
 			
-			// aapt resource value: 0x7f070048
-			public const int textView2 = 2131165256;
+			// aapt resource value: 0x7f070050
+			public const int textView2 = 2131165264;
 			
-			// aapt resource value: 0x7f07004a
-			public const int textView3 = 2131165258;
+			// aapt resource value: 0x7f070052
+			public const int textView3 = 2131165266;
 			
 			// aapt resource value: 0x7f070027
 			public const int title = 2131165223;
 			
-			// aapt resource value: 0x7f070040
-			public const int tossButton = 2131165248;
+			// aapt resource value: 0x7f070049
+			public const int tossButton = 2131165257;
 			
 			// aapt resource value: 0x7f07001d
 			public const int up = 2131165213;
@@ -1454,34 +1544,43 @@ namespace PhotoToss
 			public const int CatchFragment = 2130903064;
 			
 			// aapt resource value: 0x7f030019
-			public const int HomeFragment = 2130903065;
+			public const int DrawerListItem = 2130903065;
 			
 			// aapt resource value: 0x7f03001a
-			public const int ImageFragment = 2130903066;
+			public const int HomeFragment = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int Main = 2130903067;
+			public const int ImageFragment = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int ProfileFragment = 2130903068;
+			public const int Main = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int StatsFragment = 2130903069;
+			public const int photoGridCell = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int support_simple_spinner_dropdown_item = 2130903070;
+			public const int ProfileFragment = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int TossFragment = 2130903071;
+			public const int StatsFragment = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int ZxingOverlay = 2130903072;
+			public const int support_simple_spinner_dropdown_item = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int zxingscanneractivitylayout = 2130903073;
+			public const int TossFragment = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int zxingscannerfragmentlayout = 2130903074;
+			public const int UploadActivity = 2130903074;
+			
+			// aapt resource value: 0x7f030023
+			public const int ZxingOverlay = 2130903075;
+			
+			// aapt resource value: 0x7f030024
+			public const int zxingscanneractivitylayout = 2130903076;
+			
+			// aapt resource value: 0x7f030025
+			public const int zxingscannerfragmentlayout = 2130903077;
 			
 			static Layout()
 			{
@@ -1489,6 +1588,22 @@ namespace PhotoToss
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f0c0000
+			public const int MainMenu = 2131492864;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
 			{
 			}
 		}
