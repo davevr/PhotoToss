@@ -25,6 +25,7 @@ using Android.Text.Style;
 using Android.Provider;
 using Android.Widget;
 using Java.IO;
+using System.Diagnostics;
 
 using ZXing;
 using ZXing.Mobile;
@@ -33,6 +34,7 @@ using PhotoToss.Core;
 
 using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
+using Debug = System.Diagnostics.Debug;
 
 using PhotoToss.Core;
 
@@ -57,9 +59,7 @@ namespace PhotoToss
         private File _dir;
         public static File _file;
         public static PhotoRecord _uploadPhotoRecord;
-        private static int PHOTO_CAPTURE_EVENT = 0x777;
-        private static int PHOTO_UPLOAD_SUCCESS = 0x666;
-        private static int PHOTO_CATCH_EVENT = 0x555;
+
         public static GoogleAnalytics analytics = null;
         MobileBarcodeScanner scanner;
 
@@ -160,6 +160,7 @@ namespace PhotoToss
 
         protected override void OnCreate(Bundle bundle)
         {
+			Window.SetFlags (WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
             base.OnCreate(bundle);
             InitAnalytics();
 
@@ -187,6 +188,10 @@ namespace PhotoToss
             CreateDirectoryForPictures();
           
             selectItem(0);
+
+			FinishLoad ();
+
+
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -195,6 +200,35 @@ namespace PhotoToss
             return true;
 
         }
+
+		private void FinishLoad()
+		{
+			string username = (string)Utilities.SafeLoadSetting (Utilities.USERNAME, null);
+			string password = (string)Utilities.SafeLoadSetting (Utilities.PASSWORD, null);
+
+			if ((!String.IsNullOrEmpty (username)) && (!String.IsNullOrEmpty (password))) {
+				PhotoTossRest.Instance.Login (username, password, (theUser) => {
+					if (theUser == null)
+						PromptForSignIn (username);
+					else
+						InitForSignIn ();
+				});
+			} else
+				PromptForSignIn (username);
+		}
+
+		public void PromptForSignIn(string username = "")
+		{
+			// to do - add the user name
+			Intent	promptTask = new Intent (this, typeof(FirstRunActivity));
+			StartActivityForResult (promptTask, Utilities.SIGNIN_INTENT);
+		}
+
+		public void InitForSignIn()
+		{
+			Debug.Assert (PhotoTossRest.Instance.CurrentUser != null);
+			StartRefresh ();
+		}
 
         public override bool OnMenuOpened(int featureId, IMenu menu)
         {
@@ -215,7 +249,7 @@ namespace PhotoToss
             return base.OnMenuOpened(featureId, menu);
         }
 
-      
+
 
 
         protected override void OnPostCreate(Bundle savedInstanceState)
@@ -478,33 +512,40 @@ namespace PhotoToss
 
             intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(_file));// MediaStore.Images.Media.ExternalContentUri);
 
-            StartActivityForResult(intent, PHOTO_CAPTURE_EVENT);
+            StartActivityForResult(intent, Utilities.PHOTO_CAPTURE_EVENT);
         }
 
         protected override void OnActivityResult(int requestCode, Android.App.Result resultCode, Intent data)
         {
-            if (requestCode == PHOTO_CAPTURE_EVENT)
-            {
-                // at this point file should be a file
-                PhotoTossRest.Instance.GetUploadURL((theURL) =>
-                    {
-                        Intent upload = new Intent(this, typeof(UploadActivity));
+			if (resultCode == Android.App.Result.Ok)
+			{
+				switch (requestCode) {
+				case Utilities.PHOTO_CAPTURE_EVENT:
+					PhotoTossRest.Instance.GetUploadURL ((theURL) => {
+						Intent upload = new Intent (this, typeof(UploadActivity));
 
-                        StartActivityForResult(upload, PHOTO_UPLOAD_SUCCESS);
-                    });
-            }
-            else if (requestCode == PHOTO_UPLOAD_SUCCESS)
-            {
-                // get the image record
-                if (_uploadPhotoRecord != null)
-                {
-                    homePage.AddImage(_uploadPhotoRecord);
-                    _uploadPhotoRecord = null;
-                }
-                else
-                {
-                    // to do - some error
-                }
+						StartActivityForResult (upload, Utilities.PHOTO_UPLOAD_SUCCESS);
+					});
+					break;
+
+				case Utilities.PHOTO_UPLOAD_SUCCESS:
+					if (_uploadPhotoRecord != null) {
+						homePage.AddImage (_uploadPhotoRecord);
+						_uploadPhotoRecord = null;
+					} else {
+						// to do - some error
+					}
+					break;
+
+				case Utilities.SIGNIN_INTENT:
+					// Complete the signin
+					InitForSignIn ();
+					break;
+
+				default:
+					base.OnActivityResult (requestCode, resultCode, data);
+					break;
+				}
             }
             else
                 base.OnActivityResult(requestCode, resultCode, data);

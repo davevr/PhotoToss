@@ -16,7 +16,7 @@ using PhotoToss.Core;
 
 namespace PhotoToss
 {
-    [Activity(Label = "Create Account or Sign in")]
+	[Activity(ScreenOrientation=Android.Content.PM.ScreenOrientation.Portrait )]
     public class FirstRunActivity : Activity
     {
         private EditText usernameField;
@@ -31,6 +31,9 @@ namespace PhotoToss
 
         protected override void OnCreate(Bundle bundle)
         {
+			RequestWindowFeature (WindowFeatures.NoTitle);
+			Window.SetFlags (WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
+
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.SignInLayout);
@@ -71,7 +74,7 @@ namespace PhotoToss
 
 
                 // sign in
-                // BlahguaAPIObject.Current.Register(userName, password, true, CreateAccountResultCallback);
+				PhotoTossRest.Instance.CreateAccount(userName, password, CreateAccountResultCallback);
 
             };
 
@@ -99,7 +102,7 @@ namespace PhotoToss
                 createAccountBtn.Enabled = false;
 
                 // sign in
-                //BlahguaAPIObject.Current.SignIn(userName, password, true, SiginInResultCallback);
+				PhotoTossRest.Instance.Login(userName, password, SiginInResultCallback);
             };
 
             createAccountBtn.Enabled = false;
@@ -133,23 +136,23 @@ namespace PhotoToss
             }
         }
 
-        private void SiginInResultCallback(string result)
+        private void SiginInResultCallback(User result)
         {
 
-            if (result == null)
+            if (result != null)
             {
                 MainActivity.analytics.PostLogin();
-                Activity.RunOnUiThread(() =>
+                RunOnUiThread(() =>
                 {
                     progressDlg.Hide();
-                    ((FirstRunActivity)this.Activity).FinishSignin();
+                    FinishSignin();
                 });
             }
             else
             {
-                MainActivity.analytics.PostSessionError("signinfailed-" + result);
+                MainActivity.analytics.PostSessionError("signinfailed");
 
-                DisplayAlert(result, "Unable to sign in.  Check username and password");
+                DisplayAlert("Sign in Failed", "Unable to sign in.  Check username and password");
                 RunOnUiThread(() =>
                 {
                     progressDlg.Hide();
@@ -161,42 +164,40 @@ namespace PhotoToss
 
         }
 
-        private void CreateAccountResultCallback(string result)
+        private void CreateAccountResultCallback(User result)
         {
             if (result == null)
             {
                 MainActivity.analytics.PostRegisterUser();
-                Activity.RunOnUiThread(() =>
-                {
-                    progressDlg.Hide();
-                   string emailAddress = emailField.Text.Trim();
+                RunOnUiThread(() =>
+	                {
+	                    progressDlg.Hide();
+	                   string emailAddress = emailField.Text.Trim();
 
-                    if (!String.IsNullOrEmpty(emailAddress))
-                    {
-                        /*
-                        BlahguaAPIObject.Current.SetRecoveryEmail(FirstRunActivity.emailAddress, (resultStr) =>
-                        {
-
-                            Activity.RunOnUiThread(() =>
-                            {
-                                ((FirstRunActivity)this.Activity).GoToNext();
-                            });
-                        });
-                         */
-                    }
-                    else
-                    {
-                        Finish();
-                    }
-                        
-                });
+	                    if (!String.IsNullOrEmpty(emailAddress))
+	                    {
+							PhotoTossRest.Instance.SetRecoveryEmail(emailAddress, (resultStr) =>
+	                        {
+								RunOnUiThread(() =>
+		                            {
+										FinishSignin();
+		                            });
+	                        });
+	                        
+	                    }
+	                    else
+	                    {
+							FinishSignin();
+	                    }
+	                        
+	                });
             }
             else
             {
-                MainActivity.analytics.PostSessionError("registerfailed-" + result);
+                MainActivity.analytics.PostSessionError("registerfailed-");
 
-                DisplayAlert(result, "Unable to create account.  Check username");
-                Activity.RunOnUiThread(() =>
+                DisplayAlert("Create Account Failed", "Unable to create account.  Check username");
+                RunOnUiThread(() =>
                 {
                     progressDlg.Hide();
                     signInBtn.Enabled = true;
@@ -208,7 +209,7 @@ namespace PhotoToss
 
         public void DisplayAlert(string titleString, string descString)
         {
-            Activity.RunOnUiThread(() =>
+            RunOnUiThread(() =>
             {
                 AlertDialog alert = new AlertDialog.Builder(this).Create();
                 alert.SetTitle(titleString);
@@ -231,5 +232,16 @@ namespace PhotoToss
             prepSignIn.Visibility = ViewStates.Gone;
             createAccountBtn.Visibility = ViewStates.Gone;
         }
+
+		void FinishSignin()
+		{
+			Finish();
+		}
+
+		public override void OnBackPressed ()
+		{
+			//base.OnBackPressed ();
+		}
+
     }
 }

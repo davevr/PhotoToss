@@ -24,6 +24,8 @@ namespace PhotoToss.Core
         private string apiPath = "http://phototoss-server-01.appspot.com/api/";//"http://127.0.0.1:8080/api/"; //"http://phototoss-server-01.appspot.com/api/";//"http://www.photostore.com/api/";
         private Random rndBase = new Random();
         private string _uploadURL;
+		private User _currentUser = null;
+
 
         public PhotoTossRest()
         {
@@ -41,6 +43,11 @@ namespace PhotoToss.Core
                 return _singleton;
             }
         }
+
+		public User CurrentUser
+		{
+			get { return _currentUser; }
+		}
 
         public void GetUserImages(PhotoRecordList_callback callback)
         {
@@ -67,6 +74,18 @@ namespace PhotoToss.Core
             // to do...
             callback(User.MakeSample());
         }
+
+		public void CreateAccount(string username, string password, User_callback callback)
+		{
+			// to do...
+			callback(User.MakeSample());
+		}
+
+		public void SetRecoveryEmail(string emailAddr, String_callback callback)
+		{
+			// to do...
+			callback(emailAddr);
+		}
 
         public void GetUploadURL(String_callback callback)
         {
