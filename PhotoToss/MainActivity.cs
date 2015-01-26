@@ -8,6 +8,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using System.Collections.Generic;
+using System.IO.IsolatedStorage;
 
 using Android.Support.V7.Widget;
 using Android.Support.V7.View;
@@ -33,6 +34,8 @@ using PhotoToss.Core;
 using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
 
+using PhotoToss.Core;
+
 namespace PhotoToss
 {
     [Activity(Label = "PhotoToss", MainLauncher = true, Icon = "@drawable/iconnoborder", Theme = "@style/Theme.AppCompat.Light", ScreenOrientation=Android.Content.PM.ScreenOrientation.Portrait )]
@@ -57,6 +60,7 @@ namespace PhotoToss
         private static int PHOTO_CAPTURE_EVENT = 0x777;
         private static int PHOTO_UPLOAD_SUCCESS = 0x666;
         private static int PHOTO_CATCH_EVENT = 0x555;
+        public static GoogleAnalytics analytics = null;
         MobileBarcodeScanner scanner;
 
         public event Action PulledToRefresh;
@@ -157,6 +161,7 @@ namespace PhotoToss
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
+            InitAnalytics();
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
@@ -505,6 +510,30 @@ namespace PhotoToss
                 base.OnActivityResult(requestCode, resultCode, data);
         }
 
+        private void InitAnalytics()
+        {
+            string uniqueId;
+
+            IsolatedStorageSettings settings = IsolatedStorageSettings.ApplicationSettings;
+            if (settings.Contains("uniqueId"))
+                uniqueId = settings["uniqueId"].ToString();
+            else
+            {
+                uniqueId = Guid.NewGuid().ToString();
+                settings.Add("uniqueId", uniqueId);
+                settings.Save();
+
+            }
+
+            string maker = Build.Manufacturer;
+            string model = Build.Model;
+            string version = ApplicationContext.PackageManager.GetPackageInfo(ApplicationContext.PackageName, 0).VersionName;
+            string platform = "ANDROID";
+            string userAgent = "Mozilla/5.0 (Linux; Android; Mobile) ";
+
+            analytics = new GoogleAnalytics(userAgent, maker, model, version, platform, uniqueId);
+            analytics.StartSession();
+        }
         
 
 

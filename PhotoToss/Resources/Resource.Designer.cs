@@ -1156,6 +1156,9 @@ namespace PhotoToss
 			// aapt resource value: 0x7f02003f
 			public const int iconNoBorder = 2130837567;
 			
+			// aapt resource value: 0x7f020040
+			public const int tosstopus = 2130837568;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -1169,32 +1172,32 @@ namespace PhotoToss
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f070059
-			public const int AboutBtn = 2131165273;
-			
-			// aapt resource value: 0x7f07004e
-			public const int AddTagBtn = 2131165262;
+			// aapt resource value: 0x7f070062
+			public const int AboutBtn = 2131165282;
 			
 			// aapt resource value: 0x7f070057
-			public const int CatchButton = 2131165271;
+			public const int AddTagBtn = 2131165271;
+			
+			// aapt resource value: 0x7f070060
+			public const int CatchButton = 2131165280;
 			
 			// aapt resource value: 0x7f070040
 			public const int ItemName = 2131165248;
 			
-			// aapt resource value: 0x7f070055
-			public const int MainMenu = 2131165269;
-			
-			// aapt resource value: 0x7f07004d
-			public const int NewTagText = 2131165261;
+			// aapt resource value: 0x7f07005e
+			public const int MainMenu = 2131165278;
 			
 			// aapt resource value: 0x7f070056
-			public const int PhotoButton = 2131165270;
+			public const int NewTagText = 2131165270;
+			
+			// aapt resource value: 0x7f07005f
+			public const int PhotoButton = 2131165279;
+			
+			// aapt resource value: 0x7f070061
+			public const int SettingsBtn = 2131165281;
 			
 			// aapt resource value: 0x7f070058
-			public const int SettingsBtn = 2131165272;
-			
-			// aapt resource value: 0x7f07004f
-			public const int UploadBtn = 2131165263;
+			public const int UploadBtn = 2131165272;
 			
 			// aapt resource value: 0x7f070031
 			public const int action_bar = 2131165233;
@@ -1241,14 +1244,14 @@ namespace PhotoToss
 			// aapt resource value: 0x7f07000f
 			public const int always = 2131165199;
 			
-			// aapt resource value: 0x7f070048
-			public const int aztekView = 2131165256;
+			// aapt resource value: 0x7f070053
+			public const int aztekView = 2131165267;
 			
 			// aapt resource value: 0x7f07000a
 			public const int beginning = 2131165194;
 			
-			// aapt resource value: 0x7f070053
-			public const int buttonZxingFlash = 2131165267;
+			// aapt resource value: 0x7f07005c
+			public const int buttonZxingFlash = 2131165276;
 			
 			// aapt resource value: 0x7f070047
 			public const int captionText = 2131165255;
@@ -1259,8 +1262,11 @@ namespace PhotoToss
 			// aapt resource value: 0x7f070011
 			public const int collapseActionView = 2131165201;
 			
-			// aapt resource value: 0x7f070054
-			public const int contentFrame = 2131165268;
+			// aapt resource value: 0x7f07005d
+			public const int contentFrame = 2131165277;
+			
+			// aapt resource value: 0x7f070051
+			public const int createBtn = 2131165265;
 			
 			// aapt resource value: 0x7f07002f
 			public const int decor_content_parent = 2131165231;
@@ -1282,6 +1288,12 @@ namespace PhotoToss
 			
 			// aapt resource value: 0x7f070033
 			public const int edit_query = 2131165235;
+			
+			// aapt resource value: 0x7f070050
+			public const int emailAddrField = 2131165264;
+			
+			// aapt resource value: 0x7f07004f
+			public const int emailPrompt = 2131165263;
 			
 			// aapt resource value: 0x7f07000c
 			public const int end = 2131165196;
@@ -1316,17 +1328,20 @@ namespace PhotoToss
 			// aapt resource value: 0x7f070045
 			public const int imageView = 2131165253;
 			
+			// aapt resource value: 0x7f07004a
+			public const int imageView1 = 2131165258;
+			
 			// aapt resource value: 0x7f070041
 			public const int imagesView = 2131165249;
 			
 			// aapt resource value: 0x7f070044
 			public const int left_drawer = 2131165252;
 			
-			// aapt resource value: 0x7f07004c
-			public const int linearLayout1 = 2131165260;
+			// aapt resource value: 0x7f070049
+			public const int linearLayout1 = 2131165257;
 			
-			// aapt resource value: 0x7f070051
-			public const int linearLayout2 = 2131165265;
+			// aapt resource value: 0x7f07005a
+			public const int linearLayout2 = 2131165274;
 			
 			// aapt resource value: 0x7f070001
 			public const int listMode = 2131165185;
@@ -1346,6 +1361,15 @@ namespace PhotoToss
 			// aapt resource value: 0x7f070000
 			public const int normal = 2131165184;
 			
+			// aapt resource value: 0x7f07004c
+			public const int password = 2131165260;
+			
+			// aapt resource value: 0x7f07004e
+			public const int password2 = 2131165262;
+			
+			// aapt resource value: 0x7f070052
+			public const int prepSignIn = 2131165266;
+			
 			// aapt resource value: 0x7f07001a
 			public const int progress_circular = 2131165210;
 			
@@ -1355,8 +1379,8 @@ namespace PhotoToss
 			// aapt resource value: 0x7f07002b
 			public const int radio = 2131165227;
 			
-			// aapt resource value: 0x7f07004a
-			public const int scrollView1 = 2131165258;
+			// aapt resource value: 0x7f070048
+			public const int scrollView1 = 2131165256;
 			
 			// aapt resource value: 0x7f070035
 			public const int search_badge = 2131165237;
@@ -1400,6 +1424,9 @@ namespace PhotoToss
 			// aapt resource value: 0x7f070007
 			public const int showTitle = 2131165191;
 			
+			// aapt resource value: 0x7f07004d
+			public const int signInBtn = 2131165261;
+			
 			// aapt resource value: 0x7f07001c
 			public const int split_action_bar = 2131165212;
 			
@@ -1409,29 +1436,32 @@ namespace PhotoToss
 			// aapt resource value: 0x7f070002
 			public const int tabMode = 2131165186;
 			
-			// aapt resource value: 0x7f07004b
-			public const int tagsField = 2131165259;
+			// aapt resource value: 0x7f070055
+			public const int tagsField = 2131165269;
 			
 			// aapt resource value: 0x7f07003f
 			public const int textView1 = 2131165247;
 			
-			// aapt resource value: 0x7f070050
-			public const int textView2 = 2131165264;
+			// aapt resource value: 0x7f070059
+			public const int textView2 = 2131165273;
 			
-			// aapt resource value: 0x7f070052
-			public const int textView3 = 2131165266;
+			// aapt resource value: 0x7f07005b
+			public const int textView3 = 2131165275;
 			
 			// aapt resource value: 0x7f070027
 			public const int title = 2131165223;
 			
-			// aapt resource value: 0x7f070049
-			public const int tossButton = 2131165257;
+			// aapt resource value: 0x7f070054
+			public const int tossButton = 2131165268;
 			
 			// aapt resource value: 0x7f07001d
 			public const int up = 2131165213;
 			
 			// aapt resource value: 0x7f070004
 			public const int useLogo = 2131165188;
+			
+			// aapt resource value: 0x7f07004b
+			public const int usernameField = 2131165259;
 			
 			// aapt resource value: 0x7f070010
 			public const int withText = 2131165200;
@@ -1562,25 +1592,28 @@ namespace PhotoToss
 			public const int ProfileFragment = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int StatsFragment = 2130903071;
+			public const int SignInLayout = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int support_simple_spinner_dropdown_item = 2130903072;
+			public const int StatsFragment = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int TossFragment = 2130903073;
+			public const int support_simple_spinner_dropdown_item = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int UploadActivity = 2130903074;
+			public const int TossFragment = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int ZxingOverlay = 2130903075;
+			public const int UploadActivity = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int zxingscanneractivitylayout = 2130903076;
+			public const int ZxingOverlay = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int zxingscannerfragmentlayout = 2130903077;
+			public const int zxingscanneractivitylayout = 2130903077;
+			
+			// aapt resource value: 0x7f030026
+			public const int zxingscannerfragmentlayout = 2130903078;
 			
 			static Layout()
 			{

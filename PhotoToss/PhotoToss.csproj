@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="Activities\BrowseFragment.cs" />
     <Compile Include="Activities\CatchFragment.cs" />
+    <Compile Include="Activities\SignInActivity.cs" />
     <Compile Include="Activities\HomeFragment.cs" />
     <Compile Include="Activities\ImageFragment.cs" />
     <Compile Include="Activities\ProfileFragment.cs" />
@@ -130,6 +131,9 @@
     <AndroidResource Include="Resources\layout\photoGridCell.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\SignInLayout.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -156,6 +160,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\ic_camera.png" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\drawable\car.png" />
+    <AndroidResource Include="Resources\drawable\tosstopus.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="restsharp">
