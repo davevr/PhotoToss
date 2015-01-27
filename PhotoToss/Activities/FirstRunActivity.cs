@@ -235,6 +235,7 @@ namespace PhotoToss
 
 		void FinishSignin()
 		{
+			SetResult (Result.Ok);
 			Finish();
 		}
 

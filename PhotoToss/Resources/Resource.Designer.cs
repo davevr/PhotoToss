@@ -30,6 +30,28 @@ namespace PhotoToss
 			global::ZXing.Mobile.Resource.Id.contentFrame = global::PhotoToss.Resource.Id.contentFrame;
 			global::ZXing.Mobile.Resource.Layout.zxingscanneractivitylayout = global::PhotoToss.Resource.Layout.zxingscanneractivitylayout;
 			global::ZXing.Mobile.Resource.Layout.zxingscannerfragmentlayout = global::PhotoToss.Resource.Layout.zxingscannerfragmentlayout;
+			global::SatelliteMenu.Resource.Animation.popoutMenuItemAnticipateInterpolator = global::PhotoToss.Resource.Animation.popoutMenuItemAnticipateInterpolator;
+			global::SatelliteMenu.Resource.Animation.popoutMenuItemClickAnim = global::PhotoToss.Resource.Animation.popoutMenuItemClickAnim;
+			global::SatelliteMenu.Resource.Animation.popoutMenuItemClickInterpolator = global::PhotoToss.Resource.Animation.popoutMenuItemClickInterpolator;
+			global::SatelliteMenu.Resource.Animation.popoutMenuItemInRotateInterpolator = global::PhotoToss.Resource.Animation.popoutMenuItemInRotateInterpolator;
+			global::SatelliteMenu.Resource.Animation.popoutMenuItemOutRotateInterpolator = global::PhotoToss.Resource.Animation.popoutMenuItemOutRotateInterpolator;
+			global::SatelliteMenu.Resource.Animation.popoutMenuItemOvershootInterpolator = global::PhotoToss.Resource.Animation.popoutMenuItemOvershootInterpolator;
+			global::SatelliteMenu.Resource.Animation.popoutMenuRotateLeftAnim = global::PhotoToss.Resource.Animation.popoutMenuRotateLeftAnim;
+			global::SatelliteMenu.Resource.Animation.popoutMenuRotateRight = global::PhotoToss.Resource.Animation.popoutMenuRotateRight;
+			global::SatelliteMenu.Resource.Attribute.closeOnClick = global::PhotoToss.Resource.Attribute.closeOnClick;
+			global::SatelliteMenu.Resource.Attribute.itemsAngle = global::PhotoToss.Resource.Attribute.itemsAngle;
+			global::SatelliteMenu.Resource.Attribute.mainImage = global::PhotoToss.Resource.Attribute.mainImage;
+			global::SatelliteMenu.Resource.Attribute.radius = global::PhotoToss.Resource.Attribute.radius;
+			global::SatelliteMenu.Resource.Attribute.speed = global::PhotoToss.Resource.Attribute.speed;
+			global::SatelliteMenu.Resource.Id.popoutMenuItem = global::PhotoToss.Resource.Id.popoutMenuItem;
+			global::SatelliteMenu.Resource.Layout.popoutMenuItem = global::PhotoToss.Resource.Layout.popoutMenuItem;
+			global::SatelliteMenu.Resource.String.empty = global::PhotoToss.Resource.String.empty;
+			global::SatelliteMenu.Resource.Styleable.SatelliteMenu = global::PhotoToss.Resource.Styleable.SatelliteMenu;
+			global::SatelliteMenu.Resource.Styleable.SatelliteMenu_closeOnClick = global::PhotoToss.Resource.Styleable.SatelliteMenu_closeOnClick;
+			global::SatelliteMenu.Resource.Styleable.SatelliteMenu_itemsAngle = global::PhotoToss.Resource.Styleable.SatelliteMenu_itemsAngle;
+			global::SatelliteMenu.Resource.Styleable.SatelliteMenu_mainImage = global::PhotoToss.Resource.Styleable.SatelliteMenu_mainImage;
+			global::SatelliteMenu.Resource.Styleable.SatelliteMenu_radius = global::PhotoToss.Resource.Styleable.SatelliteMenu_radius;
+			global::SatelliteMenu.Resource.Styleable.SatelliteMenu_speed = global::PhotoToss.Resource.Styleable.SatelliteMenu_speed;
 		}
 		
 		public partial class Animation
@@ -52,6 +74,30 @@ namespace PhotoToss
 			
 			// aapt resource value: 0x7f040005
 			public const int abc_slide_out_top = 2130968581;
+			
+			// aapt resource value: 0x7f040006
+			public const int popoutMenuItemAnticipateInterpolator = 2130968582;
+			
+			// aapt resource value: 0x7f040007
+			public const int popoutMenuItemClickAnim = 2130968583;
+			
+			// aapt resource value: 0x7f040008
+			public const int popoutMenuItemClickInterpolator = 2130968584;
+			
+			// aapt resource value: 0x7f040009
+			public const int popoutMenuItemInRotateInterpolator = 2130968585;
+			
+			// aapt resource value: 0x7f04000a
+			public const int popoutMenuItemOutRotateInterpolator = 2130968586;
+			
+			// aapt resource value: 0x7f04000b
+			public const int popoutMenuItemOvershootInterpolator = 2130968587;
+			
+			// aapt resource value: 0x7f04000c
+			public const int popoutMenuRotateLeftAnim = 2130968588;
+			
+			// aapt resource value: 0x7f04000d
+			public const int popoutMenuRotateRight = 2130968589;
 			
 			static Animation()
 			{
@@ -192,6 +238,9 @@ namespace PhotoToss
 			// aapt resource value: 0x7f01001c
 			public const int closeItemLayout = 2130771996;
 			
+			// aapt resource value: 0x7f0100ac
+			public const int closeOnClick = 2130772140;
+			
 			// aapt resource value: 0x7f0100a4
 			public const int collapseContentDescription = 2130772132;
 			
@@ -321,6 +370,9 @@ namespace PhotoToss
 			// aapt resource value: 0x7f010014
 			public const int itemPadding = 2130771988;
 			
+			// aapt resource value: 0x7f0100aa
+			public const int itemsAngle = 2130772138;
+			
 			// aapt resource value: 0x7f010032
 			public const int layout = 2130772018;
 			
@@ -347,6 +399,9 @@ namespace PhotoToss
 			
 			// aapt resource value: 0x7f01000a
 			public const int logo = 2130771978;
+			
+			// aapt resource value: 0x7f0100ad
+			public const int mainImage = 2130772141;
 			
 			// aapt resource value: 0x7f0100a1
 			public const int maxButtonHeight = 2130772129;
@@ -414,6 +469,9 @@ namespace PhotoToss
 			// aapt resource value: 0x7f010034
 			public const int queryHint = 2130772020;
 			
+			// aapt resource value: 0x7f0100ab
+			public const int radius = 2130772139;
+			
 			// aapt resource value: 0x7f010037
 			public const int searchIcon = 2130772023;
 			
@@ -434,6 +492,9 @@ namespace PhotoToss
 			
 			// aapt resource value: 0x7f010047
 			public const int showText = 2130772039;
+			
+			// aapt resource value: 0x7f0100a9
+			public const int speed = 2130772137;
 			
 			// aapt resource value: 0x7f010021
 			public const int spinBars = 2130772001;
@@ -1172,32 +1233,32 @@ namespace PhotoToss
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f080062
-			public const int AboutBtn = 2131230818;
+			// aapt resource value: 0x7f080065
+			public const int AboutBtn = 2131230821;
 			
-			// aapt resource value: 0x7f080057
-			public const int AddTagBtn = 2131230807;
+			// aapt resource value: 0x7f08005a
+			public const int AddTagBtn = 2131230810;
 			
-			// aapt resource value: 0x7f080060
-			public const int CatchButton = 2131230816;
+			// aapt resource value: 0x7f080063
+			public const int CatchButton = 2131230819;
 			
 			// aapt resource value: 0x7f080040
 			public const int ItemName = 2131230784;
 			
-			// aapt resource value: 0x7f08005e
-			public const int MainMenu = 2131230814;
-			
-			// aapt resource value: 0x7f080056
-			public const int NewTagText = 2131230806;
-			
-			// aapt resource value: 0x7f08005f
-			public const int PhotoButton = 2131230815;
-			
 			// aapt resource value: 0x7f080061
-			public const int SettingsBtn = 2131230817;
+			public const int MainMenu = 2131230817;
 			
-			// aapt resource value: 0x7f080058
-			public const int UploadBtn = 2131230808;
+			// aapt resource value: 0x7f080059
+			public const int NewTagText = 2131230809;
+			
+			// aapt resource value: 0x7f080062
+			public const int PhotoButton = 2131230818;
+			
+			// aapt resource value: 0x7f080064
+			public const int SettingsBtn = 2131230820;
+			
+			// aapt resource value: 0x7f08005b
+			public const int UploadBtn = 2131230811;
 			
 			// aapt resource value: 0x7f080031
 			public const int action_bar = 2131230769;
@@ -1244,14 +1305,14 @@ namespace PhotoToss
 			// aapt resource value: 0x7f080016
 			public const int always = 2131230742;
 			
-			// aapt resource value: 0x7f080053
-			public const int aztekView = 2131230803;
+			// aapt resource value: 0x7f080054
+			public const int aztekView = 2131230804;
 			
 			// aapt resource value: 0x7f080013
 			public const int beginning = 2131230739;
 			
-			// aapt resource value: 0x7f08005c
-			public const int buttonZxingFlash = 2131230812;
+			// aapt resource value: 0x7f08005f
+			public const int buttonZxingFlash = 2131230815;
 			
 			// aapt resource value: 0x7f080047
 			public const int captionText = 2131230791;
@@ -1262,11 +1323,11 @@ namespace PhotoToss
 			// aapt resource value: 0x7f080017
 			public const int collapseActionView = 2131230743;
 			
-			// aapt resource value: 0x7f08005d
-			public const int contentFrame = 2131230813;
+			// aapt resource value: 0x7f080060
+			public const int contentFrame = 2131230816;
 			
-			// aapt resource value: 0x7f080051
-			public const int createBtn = 2131230801;
+			// aapt resource value: 0x7f080052
+			public const int createBtn = 2131230802;
 			
 			// aapt resource value: 0x7f08002f
 			public const int decor_content_parent = 2131230767;
@@ -1289,11 +1350,11 @@ namespace PhotoToss
 			// aapt resource value: 0x7f080033
 			public const int edit_query = 2131230771;
 			
-			// aapt resource value: 0x7f080050
-			public const int emailAddrField = 2131230800;
+			// aapt resource value: 0x7f080051
+			public const int emailAddrField = 2131230801;
 			
-			// aapt resource value: 0x7f08004f
-			public const int emailPrompt = 2131230799;
+			// aapt resource value: 0x7f080050
+			public const int emailPrompt = 2131230800;
 			
 			// aapt resource value: 0x7f080014
 			public const int end = 2131230740;
@@ -1328,8 +1389,8 @@ namespace PhotoToss
 			// aapt resource value: 0x7f080045
 			public const int imageView = 2131230789;
 			
-			// aapt resource value: 0x7f08004a
-			public const int imageView1 = 2131230794;
+			// aapt resource value: 0x7f08004b
+			public const int imageView1 = 2131230795;
 			
 			// aapt resource value: 0x7f080041
 			public const int imagesView = 2131230785;
@@ -1337,17 +1398,20 @@ namespace PhotoToss
 			// aapt resource value: 0x7f080044
 			public const int left_drawer = 2131230788;
 			
-			// aapt resource value: 0x7f080049
-			public const int linearLayout1 = 2131230793;
+			// aapt resource value: 0x7f08004a
+			public const int linearLayout1 = 2131230794;
 			
-			// aapt resource value: 0x7f08005a
-			public const int linearLayout2 = 2131230810;
+			// aapt resource value: 0x7f08005d
+			public const int linearLayout2 = 2131230813;
 			
 			// aapt resource value: 0x7f080009
 			public const int listMode = 2131230729;
 			
 			// aapt resource value: 0x7f080025
 			public const int list_item = 2131230757;
+			
+			// aapt resource value: 0x7f080055
+			public const int menu = 2131230805;
 			
 			// aapt resource value: 0x7f080015
 			public const int middle = 2131230741;
@@ -1361,14 +1425,20 @@ namespace PhotoToss
 			// aapt resource value: 0x7f08000a
 			public const int normal = 2131230730;
 			
-			// aapt resource value: 0x7f08004c
-			public const int password = 2131230796;
+			// aapt resource value: 0x7f08004d
+			public const int password = 2131230797;
 			
-			// aapt resource value: 0x7f08004e
-			public const int password2 = 2131230798;
+			// aapt resource value: 0x7f08004f
+			public const int password2 = 2131230799;
 			
-			// aapt resource value: 0x7f080052
-			public const int prepSignIn = 2131230802;
+			// aapt resource value: 0x7f080056
+			public const int popoutMenu = 2131230806;
+			
+			// aapt resource value: 0x7f080048
+			public const int popoutMenuItem = 2131230792;
+			
+			// aapt resource value: 0x7f080053
+			public const int prepSignIn = 2131230803;
 			
 			// aapt resource value: 0x7f080005
 			public const int progress_circular = 2131230725;
@@ -1379,8 +1449,8 @@ namespace PhotoToss
 			// aapt resource value: 0x7f08002b
 			public const int radio = 2131230763;
 			
-			// aapt resource value: 0x7f080048
-			public const int scrollView1 = 2131230792;
+			// aapt resource value: 0x7f080049
+			public const int scrollView1 = 2131230793;
 			
 			// aapt resource value: 0x7f080035
 			public const int search_badge = 2131230773;
@@ -1424,8 +1494,8 @@ namespace PhotoToss
 			// aapt resource value: 0x7f080011
 			public const int showTitle = 2131230737;
 			
-			// aapt resource value: 0x7f08004d
-			public const int signInBtn = 2131230797;
+			// aapt resource value: 0x7f08004e
+			public const int signInBtn = 2131230798;
 			
 			// aapt resource value: 0x7f080007
 			public const int split_action_bar = 2131230727;
@@ -1436,23 +1506,23 @@ namespace PhotoToss
 			// aapt resource value: 0x7f08000b
 			public const int tabMode = 2131230731;
 			
-			// aapt resource value: 0x7f080055
-			public const int tagsField = 2131230805;
+			// aapt resource value: 0x7f080058
+			public const int tagsField = 2131230808;
 			
 			// aapt resource value: 0x7f08003f
 			public const int textView1 = 2131230783;
 			
-			// aapt resource value: 0x7f080059
-			public const int textView2 = 2131230809;
+			// aapt resource value: 0x7f08005c
+			public const int textView2 = 2131230812;
 			
-			// aapt resource value: 0x7f08005b
-			public const int textView3 = 2131230811;
+			// aapt resource value: 0x7f08005e
+			public const int textView3 = 2131230814;
 			
 			// aapt resource value: 0x7f080027
 			public const int title = 2131230759;
 			
-			// aapt resource value: 0x7f080054
-			public const int tossButton = 2131230804;
+			// aapt resource value: 0x7f080057
+			public const int tossButton = 2131230807;
 			
 			// aapt resource value: 0x7f080008
 			public const int up = 2131230728;
@@ -1460,8 +1530,8 @@ namespace PhotoToss
 			// aapt resource value: 0x7f080012
 			public const int useLogo = 2131230738;
 			
-			// aapt resource value: 0x7f08004b
-			public const int usernameField = 2131230795;
+			// aapt resource value: 0x7f08004c
+			public const int usernameField = 2131230796;
 			
 			// aapt resource value: 0x7f08001a
 			public const int withText = 2131230746;
@@ -1589,31 +1659,34 @@ namespace PhotoToss
 			public const int photoGridCell = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int ProfileFragment = 2130903070;
+			public const int popoutMenuItem = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int SignInLayout = 2130903071;
+			public const int ProfileFragment = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int StatsFragment = 2130903072;
+			public const int SignInLayout = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int support_simple_spinner_dropdown_item = 2130903073;
+			public const int StatsFragment = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int TossFragment = 2130903074;
+			public const int support_simple_spinner_dropdown_item = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int UploadActivity = 2130903075;
+			public const int TossFragment = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int ZxingOverlay = 2130903076;
+			public const int UploadActivity = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int zxingscanneractivitylayout = 2130903077;
+			public const int ZxingOverlay = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int zxingscannerfragmentlayout = 2130903078;
+			public const int zxingscanneractivitylayout = 2130903078;
+			
+			// aapt resource value: 0x7f030027
+			public const int zxingscannerfragmentlayout = 2130903079;
 			
 			static Layout()
 			{
@@ -1644,11 +1717,11 @@ namespace PhotoToss
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f0a0012
-			public const int ApplicationName = 2131361810;
+			// aapt resource value: 0x7f0a0013
+			public const int ApplicationName = 2131361811;
 			
-			// aapt resource value: 0x7f0a0011
-			public const int Hello = 2131361809;
+			// aapt resource value: 0x7f0a0012
+			public const int Hello = 2131361810;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int abc_action_bar_home_description = 2131361792;
@@ -1698,14 +1771,17 @@ namespace PhotoToss
 			// aapt resource value: 0x7f0a000f
 			public const int abc_toolbar_collapse_description = 2131361807;
 			
-			// aapt resource value: 0x7f0a0014
-			public const int drawer_close = 2131361812;
+			// aapt resource value: 0x7f0a0015
+			public const int drawer_close = 2131361813;
 			
-			// aapt resource value: 0x7f0a0013
-			public const int drawer_open = 2131361811;
+			// aapt resource value: 0x7f0a0014
+			public const int drawer_open = 2131361812;
 			
 			// aapt resource value: 0x7f0a0010
-			public const int library_name = 2131361808;
+			public const int empty = 2131361808;
+			
+			// aapt resource value: 0x7f0a0011
+			public const int library_name = 2131361809;
 			
 			static String()
 			{
@@ -2864,6 +2940,29 @@ namespace PhotoToss
 			
 			// aapt resource value: 0
 			public const int PopupWindowBackgroundState_state_above_anchor = 0;
+			
+			public static int[] SatelliteMenu = new int[]
+			{
+					2130772137,
+					2130772138,
+					2130772139,
+					2130772140,
+					2130772141};
+			
+			// aapt resource value: 3
+			public const int SatelliteMenu_closeOnClick = 3;
+			
+			// aapt resource value: 1
+			public const int SatelliteMenu_itemsAngle = 1;
+			
+			// aapt resource value: 4
+			public const int SatelliteMenu_mainImage = 4;
+			
+			// aapt resource value: 2
+			public const int SatelliteMenu_radius = 2;
+			
+			// aapt resource value: 0
+			public const int SatelliteMenu_speed = 0;
 			
 			public static int[] SearchView = new int[]
 			{

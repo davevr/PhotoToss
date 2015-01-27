@@ -22,10 +22,11 @@ namespace PhotoToss.Core
         private RestClient apiClient;
         private static PhotoTossRest _singleton = null;
         private string apiPath = "http://phototoss-server-01.appspot.com/api/";//"http://127.0.0.1:8080/api/"; //"http://phototoss-server-01.appspot.com/api/";//"http://www.photostore.com/api/";
-        private Random rndBase = new Random();
+        //private Random rndBase = new Random();
         private string _uploadURL;
+		private string _catchURL;
 		private User _currentUser = null;
-
+		public PhotoRecord CurrentImage { get; set; }
 
         public PhotoTossRest()
         {
@@ -51,34 +52,71 @@ namespace PhotoToss.Core
 
         public void GetUserImages(PhotoRecordList_callback callback)
         {
-            List<PhotoRecord> photoList = new List<PhotoRecord>();
-            // to do
+			string fullURL = "images";
 
-            if ((photoList == null) || (photoList.Count == 0))
-            {
-                int rndCount = 1;// rndBase.Next(100) + 15;
-                for (int i = 0; i < rndCount; i++)
-                {
-                    PhotoRecord newRec = PhotoRecord.MakeSample();
-                    //newRec.imageUrl = "http://lh5.ggpht.com/yizAvQIwFWLXFHxj8mTE0WF_WIL2q-yTwkplk2AzQ7wYU9sUfEATajem6T5TURImyL8KMJxvp252JiCExlvcUFSZWZn7k5uL";
-                    newRec.caption = "she is sweet!";
-                    photoList.Add(newRec);
-                }
-            }
+			RestRequest request = new RestRequest(fullURL, Method.GET);
 
-            callback(photoList);
+			apiClient.ExecuteAsync<List<PhotoRecord>>(request, (response) =>
+				{
+					if (response == null)
+						return;
+					if (response.StatusCode == HttpStatusCode.OK)
+					{
+						List<PhotoRecord> imageList = response.Data;
+
+					 	callback(imageList);
+					}
+					else
+						callback(null);
+				});
         }
 
         public void Login(string username, string password, User_callback callback)
         {
-            // to do...
-            callback(User.MakeSample());
+			string fullURL = "user/login";
+
+			RestRequest request = new RestRequest(fullURL, Method.POST);
+			request.AddParameter ("username", username);
+			request.AddParameter ("password", password);
+
+			apiClient.ExecuteAsync<User>(request, (response) =>
+				{
+					User newUser = response.Data;
+
+					if (newUser != null)
+					{
+						_currentUser = newUser;
+						Utilities.SafeSaveSetting(Utilities.USERNAME, username);
+						Utilities.SafeSaveSetting(Utilities.PASSWORD, password);
+						callback(newUser);
+					}
+					else
+						callback(null);
+				});
         }
 
 		public void CreateAccount(string username, string password, User_callback callback)
 		{
-			// to do...
-			callback(User.MakeSample());
+			string fullURL = "user/create";
+
+			RestRequest request = new RestRequest(fullURL, Method.POST);
+			request.AddParameter ("username", username);
+			request.AddParameter ("password", password);
+
+			apiClient.ExecuteAsync<User>(request, (response) =>
+				{
+					User newUser = response.Data;
+
+					if (newUser != null)
+					{
+						_currentUser = newUser;
+						Utilities.SafeSaveSetting(Utilities.USERNAME, username);
+						Utilities.SafeSaveSetting(Utilities.PASSWORD, password);
+						callback(newUser);
+					}
+					else
+						callback(null);
+				});
 		}
 
 		public void SetRecoveryEmail(string emailAddr, String_callback callback)
@@ -100,6 +138,82 @@ namespace PhotoToss.Core
             });
 
         }
+
+		public void GetCatchURL(String_callback callback)
+		{
+			string fullURL = "catchURL";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+
+			apiClient.ExecuteAsync(request, (response) =>
+				{
+					_catchURL = response.Content;
+					callback(_catchURL);
+				});
+
+		}
+
+	
+			
+
+		public void GetImage(String_callback callback)
+		{
+			string fullURL = "image";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+
+			apiClient.ExecuteAsync(request, (response) =>
+				{
+					_uploadURL = response.Content;
+					callback(_uploadURL);
+				});
+
+		}
+
+
+		public void StartToss(String_callback callback)
+		{
+			string fullURL = "toss";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+
+			apiClient.ExecuteAsync(request, (response) =>
+				{
+					_uploadURL = response.Content;
+					callback(_uploadURL);
+				});
+
+		}
+
+		public void CatchToss(String_callback callback)
+		{
+			string fullURL = "catch";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+
+			apiClient.ExecuteAsync(request, (response) =>
+				{
+					_uploadURL = response.Content;
+					callback(_uploadURL);
+				});
+
+		}
+
+		public void GetTossStatus(String_callback callback)
+		{
+			string fullURL = "toss/status";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+
+			apiClient.ExecuteAsync(request, (response) =>
+				{
+					_uploadURL = response.Content;
+					callback(_uploadURL);
+				});
+
+		}
+
+
 
         public void UploadImage(Stream photoStream, string caption, string tags, PhotoRecord_callback callback)
         {

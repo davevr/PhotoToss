@@ -62,6 +62,12 @@
       <HintPath>Components\zxing.net.mobile-1.4.7\lib\android\ZXing.Net.Mobile.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="UrlImageViewHelper">
+      <HintPath>Components\urlimageviewhelper-1.0.4\lib\android\UrlImageViewHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="SatelliteMenu">
+      <HintPath>Components\satellite-menu-1.2.1.0\lib\android\SatelliteMenu.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\BrowseFragment.cs" />
@@ -161,14 +167,6 @@
     <AndroidResource Include="Resources\drawable\tosstopus.png" />
   </ItemGroup>
   <ItemGroup>
-    <XamarinComponentReference Include="restsharp">
-      <Version>105.0.1.0</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="servicestacktext">
-      <Version>3.9.61.1</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
     <XamarinComponentReference Include="xamandroidsupportv4-18">
       <Version>21.0.3.0</Version>
       <Visible>False</Visible>
@@ -178,7 +176,23 @@
       <Visible>False</Visible>
     </XamarinComponentReference>
     <XamarinComponentReference Include="zxing.net.mobile">
-      <Version>1.4.7.1</Version>
+      <Version>1.4.7</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="restsharp">
+      <Version>104.4.0.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="servicestacktext">
+      <Version>3.9.61.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="urlimageviewhelper">
+      <Version>1.0.4</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="satellite-menu">
+      <Version>1.2.1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>

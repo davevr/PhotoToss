@@ -50,6 +50,8 @@ namespace PhotoToss
 				settings.Save();
 			}
 		}
+
+
 	}
 }
 

@@ -12,7 +12,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Android.Graphics;
-
+using ServiceStack.Text;
 
 
 using PhotoToss.Core;
@@ -33,12 +33,16 @@ namespace PhotoToss
 
             var view = inflater.Inflate(Resource.Layout.HomeFragment, container, false);
 
+			PhotoList = new List<PhotoRecord> ();
+
             imageGrid = view.FindViewById<GridView>(Resource.Id.imagesView);
             imageGrid.Visibility = ViewStates.Invisible;
             imageGrid.Adapter = new PhotoRecordAdapter(this.Activity, this);
             imageGrid.NumColumns = 2;
             imageGrid.StretchMode = StretchMode.StretchColumnWidth;
             imageGrid.ItemClick += imageGrid_ItemClick;
+
+
 
            
            
@@ -49,6 +53,8 @@ namespace PhotoToss
 
         void imageGrid_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
+			Intent viewIntent = new Intent (this.Activity, (typeof(TossActivity)));
+			PhotoTossRest.Instance.CurrentImage = PhotoList [e.Position];
             this.Activity.StartActivity(typeof(TossActivity));
         }
 
@@ -60,21 +66,33 @@ namespace PhotoToss
 
         public void Refresh()
         {
-            PhotoTossRest.Instance.GetUserImages((userImageList) =>
-                {
-                    this.PhotoList = userImageList;
-                    if (PhotoList.Count == 0)
-                    {
-                        imageGrid.Visibility = ViewStates.Invisible;
-                    }
-                    else
-                    {
-                        imageGrid.Visibility = ViewStates.Visible;
-                        imageGrid.InvalidateViews();
-                        imageGrid.SmoothScrollToPosition(0);
-                    }
+			if (PhotoTossRest.Instance.CurrentUser != null) 
+			{
+				PhotoTossRest.Instance.GetUserImages ((userImageList) => 
+					{
+						this.Activity.RunOnUiThread(() =>
+							{
 
-                });
+								this.PhotoList.Clear();
+								if (userImageList.Count == 0) 
+								{
+									imageGrid.Visibility = ViewStates.Invisible;
+								} 
+								else 
+								{
+									PhotoList.AddRange(userImageList);
+									int numItems = imageGrid.Adapter.Count;
+									imageGrid.Visibility = ViewStates.Visible;
+									((PhotoRecordAdapter)imageGrid.Adapter).NotifyDataSetChanged();
+									imageGrid.InvalidateViews ();
+
+									imageGrid.SmoothScrollToPosition (0);
+								}
+							});
+
+					});
+			}
+			else imageGrid.Visibility = ViewStates.Invisible;
         }
 
         public void AddImage(PhotoRecord newRec)
@@ -154,40 +172,13 @@ namespace PhotoToss
                 imageView.SetScaleType(ImageView.ScaleType.CenterCrop);
 
                 captionText.Text = curRec.caption;
+				Koush.UrlImageViewHelper.SetUrlDrawable (imageView, curRec.imageUrl + "=s" + itemWidth.ToString(), Resource.Drawable.ic_camera);
 
-                Bitmap imageBitmap = (Bitmap)curRec.CachedImage;
-                if (imageBitmap == null)
-                {
-                    imageBitmap = GetImageBitmapFromUrl(curRec.imageUrl + "=s" + itemWidth.ToString());
-                    home.PhotoList[position].CachedImage = imageBitmap;
-                }
-                imageView.SetImageBitmap(imageBitmap);
-
+               
                 return curView;
             }
 
-            private Bitmap GetImageBitmapFromUrl(string url)
-            {
-                Bitmap imageBitmap = null;
-
-                try 
-                {
-                    using (var webClient = new WebClient())
-                    {
-                        var imageBytes = webClient.DownloadData(url);
-                        if (imageBytes != null && imageBytes.Length > 0)
-                        {
-                            imageBitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
-                        }
-                    }
-                
-                }
-                catch (Exception)
-                { }
-               
-
-                return imageBitmap;
-            }
+            
 
             
         }
