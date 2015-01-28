@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net;
+using System.IO;
 
 using Android.App;
 using Android.Content;
@@ -17,13 +18,13 @@ using Android.Support.V7.App;
 using Android.Support.V4.Widget;
 using Android.Graphics;
 using Android.Media;
-using Android.OS;
 
 using Android.Util;
 using Android.Text;
 using Android.Text.Style;
 using Android.Provider;
-using Android.Widget;
+
+using Android.Locations;
 using Java.IO;
 using System.Diagnostics;
 
@@ -36,17 +37,17 @@ using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
 using Debug = System.Diagnostics.Debug;
 
-using PhotoToss.Core;
+
+using File = Java.IO.File;
 
 namespace PhotoToss
 {
     [Activity(Label = "PhotoToss", MainLauncher = true, Icon = "@drawable/iconnoborder", Theme = "@style/Theme.AppCompat.Light", ScreenOrientation=Android.Content.PM.ScreenOrientation.Portrait )]
-    public class MainActivity : Android.Support.V7.App.ActionBarActivity
+    public class MainActivity : Android.Support.V7.App.ActionBarActivity, ILocationListener
     {
         private String[] mDrawerTitles = new string[] { "Home", "Browse", "Stats", "Profile"};
         private DrawerLayout mDrawerLayout;
         private ListView mDrawerList;
-        private string mDrawerTitle;
         private MyDrawerToggle mDrawerToggle;
         private bool refreshInProgress = false;
 
@@ -62,6 +63,9 @@ namespace PhotoToss
 
         public static GoogleAnalytics analytics = null;
         MobileBarcodeScanner scanner;
+
+		public static Location	_lastLocation = new Location("passive");
+		private LocationManager _locationManager;
 
         public event Action PulledToRefresh;
 
@@ -194,9 +198,71 @@ namespace PhotoToss
 
         }
 
+		void InitLocation()
+		{
+			// get location
+
+			if (_locationManager == null)
+				_locationManager = GetSystemService (Context.LocationService) as LocationManager;
+			Criteria locationCriteria = new Criteria();
+			locationCriteria.Accuracy = Accuracy.Fine;
+			locationCriteria.PowerRequirement = Power.NoRequirement;
+
+			string locationProvider = _locationManager.GetBestProvider(locationCriteria, true);
+			_locationManager.RequestLocationUpdates (locationProvider, 5 * 60 * 1000, 50.0f, this);
+		}
+
+		// ILocationListener
+		public void OnLocationChanged (Location location)
+		{
+			_lastLocation = location;
+		}
+
+		public void OnProviderDisabled (string provider)
+		{
+
+		}
+
+
+
+		public void OnProviderEnabled (string provider)
+		{
+
+		}
+
+		public void OnStatusChanged (string provider, Availability status, Bundle extras)
+		{
+
+		}
+
+		protected override void OnResume()
+		{
+			base.OnResume();
+			InitLocation ();
+		}
+
+		protected override void OnPause()
+		{
+			base.OnPause();
+			_locationManager.RemoveUpdates(this);
+		}
+
         public override bool OnCreateOptionsMenu(IMenu menu)
         {
             MenuInflater.Inflate(Resource.Menu.MainMenu, menu);
+
+			/*
+			if (_lastLocation != null) 
+			{
+				menu.FindItem(Resource.Id.CatchButton).SetEnabled(true);
+				menu.FindItem(Resource.Id.PhotoButton).SetEnabled (true);
+			} 
+			else 
+			{
+				menu.FindItem(Resource.Id.CatchButton).SetEnabled(false);
+				menu.FindItem(Resource.Id.PhotoButton).SetEnabled (false);
+			}
+			*/
             return true;
 
         }
@@ -240,6 +306,7 @@ namespace PhotoToss
                     var setOptionalIconsVisibleMethod = JNIEnv.GetMethodID(menuBuilder, "setOptionalIconsVisible",
                         "(Z)V");
                     JNIEnv.CallVoidMethod(menu.Handle, setOptionalIconsVisibleMethod, new[] { new JValue(true) });
+
                 }
                 catch (Exception e)
                 {
@@ -466,25 +533,30 @@ namespace PhotoToss
 
         void HandleScanResult(ZXing.Result result)
         {
-            string msg = "";
+            string msg = "";	
 
-            if (result != null && !string.IsNullOrEmpty(result.Text))
-            {
-                msg = "Found Barcode: " + result.Text;
-            }
-            else
-                msg = "Scanning Canceled!";
+			if (result != null && !string.IsNullOrEmpty (result.Text)) {
+				PhotoTossRest.Instance.GetCatchURL ((urlStr) => {
+					double latitude = 0.0;
+					double longitude = 0.0;
+					Bitmap tempImage = BitmapFactory.DecodeResource(Resources, Resource.Drawable.iconNoBorder);
+					System.IO.Stream photoStream = new MemoryStream();
+					tempImage.Compress(Bitmap.CompressFormat.Jpeg, 0, photoStream);
+					// remove toss ID from URL
+					long tossId = long.Parse(result.Text.Substring(result.Text.LastIndexOf("/") + 1));
 
+					PhotoTossRest.Instance.CatchToss(photoStream, tossId, longitude, latitude, (newRec) => 
+						{
+							homePage.AddImage(newRec);
 
-            this.RunOnUiThread(() =>
-            {
-                Toast.MakeText(this, msg, ToastLength.Short).Show();
-                PhotoRecord newRec = new PhotoRecord();
-                newRec.imageUrl = "http://lh5.ggpht.com/yizAvQIwFWLXFHxj8mTE0WF_WIL2q-yTwkplk2AzQ7wYU9sUfEATajem6T5TURImyL8KMJxvp252JiCExlvcUFSZWZn7k5uL";
-                newRec.caption = "Cool Lambo!";
-                homePage.AddImage(newRec);
-                
-            });
+						});
+				});
+			} else {
+				msg = "Scanning Canceled!";
+				this.RunOnUiThread (() => {
+					Toast.MakeText (this, msg, ToastLength.Short).Show ();
+				});
+			}
         }
 
         private Bitmap GetImageBitmapFromUrl(string url)

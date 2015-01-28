@@ -23,8 +23,10 @@ namespace PhotoToss
     public class TossActivity : Activity
     {
         Button tossBtn;
-        ImageView imageView;
+		ImageView imageView;
 		public static int itemWidth = 320;
+		Android.Util.DisplayMetrics	metrics;
+
 
 
         protected override void OnCreate(Bundle bundle)
@@ -37,6 +39,7 @@ namespace PhotoToss
             SetContentView(Resource.Layout.TossFragment);
 
 			// get the actual menu object from the layout
+			/*
 			var menu = FindViewById<SatelliteMenuButton>(Resource.Id.menu);
 
 			// register for the menu item selection event here
@@ -62,17 +65,17 @@ namespace PhotoToss
 
 			// now add all to the menus
 			menu.AddItems(items.ToArray());
-
+			*/
 
 			PhotoRecord curRec = PhotoTossRest.Instance.CurrentImage;
-			var metrics = Resources.DisplayMetrics;
+			metrics = Resources.DisplayMetrics;
 			int screenWidth = metrics.WidthPixels;
 			int screenHeight = (int)(metrics.HeightPixels * .8);
 			itemWidth = Math.Max (screenWidth, screenHeight);
 
 
             tossBtn = FindViewById<Button>(Resource.Id.tossButton);
-            imageView = FindViewById<ImageView>(Resource.Id.aztekView);
+			imageView = FindViewById<ImageView>(Resource.Id.aztekView);
 			Koush.UrlImageViewHelper.SetUrlDrawable (imageView, curRec.imageUrl + "=s" + itemWidth.ToString(), Resource.Drawable.ic_camera);
 
 
@@ -81,29 +84,44 @@ namespace PhotoToss
             tossBtn.Click +=  delegate
             {
                 tossBtn.Text = "cancel toss";
-                BarcodeWriter writer = new BarcodeWriter();
-                writer.Format = BarcodeFormat.AZTEC;
-                writer.Renderer = new BitmapRenderer();
+				double myLong = MainActivity._lastLocation.Longitude;
+				double myLat = MainActivity._lastLocation.Latitude;
+				int gameType = 0;
+				long imageId = curRec.id;
 
-                var widthInDp = ConvertPixelsToDp(metrics.WidthPixels);
-                var heightInDp = ConvertPixelsToDp(metrics.HeightPixels);
-                string baseURL = "http://phototoss.com/share/";
-                string guid = "545d0e4fe4b04019b5d10ee4";
-                string url = baseURL + guid;
-				url = "http://phototoss.com/toss/" + curRec.id;
+				PhotoTossRest.Instance.StartToss(imageId, gameType, myLong, myLat, PresentTossResult);
 
-                writer.Options.Height = 240;
-                writer.Options.Width = 240;
-                writer.Options.Margin = 1;
-
-                var bitMap = writer.Write(url);
-
-                imageView.SetImageBitmap(bitMap);
+                
 
 
             };
         }
 
+		private void PresentTossResult(TossRecord theToss)
+		{
+			RunOnUiThread (() => {
+				BarcodeWriter writer = new BarcodeWriter();
+				writer.Format = BarcodeFormat.AZTEC;
+				writer.Renderer = new BitmapRenderer();
+
+				var widthInDp = ConvertPixelsToDp(metrics.WidthPixels);
+				var heightInDp = ConvertPixelsToDp(metrics.HeightPixels);
+				string baseURL = "http://phototoss.com/share/";
+				string guid = theToss.id.ToString();
+				string url = baseURL + guid;
+				url = "http://phototoss.com/toss/" + guid;
+
+				writer.Options.Height = 240;
+				writer.Options.Width = 240;
+				writer.Options.Margin = 1;
+
+				var bitMap = writer.Write(url);
+
+				imageView.SetImageBitmap(bitMap);
+			});
+
+
+		}
     
 
         private int ConvertPixelsToDp(float pixelValue)

@@ -101,6 +101,7 @@ namespace PhotoToss
             this.Activity.RunOnUiThread(() =>
                 {
                     imageGrid.Visibility = ViewStates.Visible;
+					((PhotoRecordAdapter)imageGrid.Adapter).NotifyDataSetChanged();
                     imageGrid.InvalidateViews();
                     imageGrid.SmoothScrollToPosition(0);
                 });
@@ -148,15 +149,17 @@ namespace PhotoToss
 
             public override View GetView(int position, View convertView, ViewGroup parent)
             {
+				Random	rnd = new Random (position);
                 ImageView imageView;
                 TextView captionText;
                 View curView;
                 PhotoRecord curRec = home.PhotoList[position];
 
 
-                if (true)//convertView == null)
+                if (convertView == null)
                 {
                     curView = home.Activity.LayoutInflater.Inflate(Resource.Layout.photoGridCell,null);
+
 
                     //curView.LayoutParameters = new ViewGroup.LayoutParams(itemWidth, itemWidth); 
                   
@@ -167,6 +170,7 @@ namespace PhotoToss
                 {
                     curView = convertView;
                 }
+				curView.Rotation = ((float)(50 - rnd.Next (100)))/ 10.0f;
                 imageView = curView.FindViewById<ImageView>(Resource.Id.imageView);
                 captionText = curView.FindViewById<TextView>(Resource.Id.captionText);
                 imageView.SetScaleType(ImageView.ScaleType.CenterCrop);

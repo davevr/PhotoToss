@@ -89,6 +89,8 @@
     <Compile Include="Core\IsolatedStorageSettings.cs" />
     <Compile Include="Core\Utilities.cs" />
     <Compile Include="Activities\FirstRunActivity.cs" />
+    <Compile Include="Core\TossRecord.cs" />
+    <Compile Include="HelperClasses\ScaleImageView.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\RammettoOne-Regular.ttf" />

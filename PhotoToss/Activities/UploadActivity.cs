@@ -10,7 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Net;
-
+using Android.Locations;
 using PhotoToss.Core;
 
 using Environment = Android.OS.Environment;
@@ -48,16 +48,19 @@ namespace PhotoToss
 
         }
 
+
         void uploadBtn_Click(object sender, EventArgs e)
         {
             System.IO.Stream photoStream = System.IO.File.OpenRead(MainActivity._file.AbsolutePath);
             string caption = captionText.Text;
             string tags = tagField.Text;
+			double longitude = MainActivity._lastLocation.Longitude;
+			double latitude = MainActivity._lastLocation.Latitude;
 
             if (photoStream != null)
             {
                 //System.IO.Stream fileStream = System.IO.File.OpenRead(imgPath);
-                PhotoTossRest.Instance.UploadImage(photoStream, caption, tags, (newRec) =>
+                PhotoTossRest.Instance.UploadImage(photoStream, caption, tags, longitude, latitude, (newRec) =>
                     {
                         MainActivity._uploadPhotoRecord = newRec;
                         Finish();

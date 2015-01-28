@@ -16,12 +16,13 @@ namespace PhotoToss.Core
     public delegate void PhotoRecord_callback(PhotoRecord theResult);
     public delegate void User_callback(User theResult);
     public delegate void String_callback(String theResult);
+	public delegate void Toss_callback(TossRecord theResult);
 
     public class PhotoTossRest
     {
         private RestClient apiClient;
         private static PhotoTossRest _singleton = null;
-        private string apiPath = "http://phototoss-server-01.appspot.com/api/";//"http://127.0.0.1:8080/api/"; //"http://phototoss-server-01.appspot.com/api/";//"http://www.photostore.com/api/";
+		private string apiPath = "http://phototoss-server-01.appspot.com/api/";  //"http://localhost:8080/api/";  //"http://phototoss-server-01.appspot.com/api/";//"http://127.0.0.1:8080/api/"; //"http://phototoss-server-01.appspot.com/api/";//"http://www.photostore.com/api/";
         //private Random rndBase = new Random();
         private string _uploadURL;
 		private string _catchURL;
@@ -171,32 +172,48 @@ namespace PhotoToss.Core
 		}
 
 
-		public void StartToss(String_callback callback)
+		public void StartToss(long imageId, int gameType, double longitude, double latitude, Toss_callback callback)
 		{
 			string fullURL = "toss";
 
-			RestRequest request = new RestRequest(fullURL, Method.GET);
+			RestRequest request = new RestRequest(fullURL, Method.POST);
+			request.AddParameter ("image", imageId);
+			request.AddParameter ("game", gameType);
+			request.AddParameter ("long", longitude);
+			request.AddParameter ("lat", latitude);
 
-			apiClient.ExecuteAsync(request, (response) =>
+			apiClient.ExecuteAsync<TossRecord>(request, (response) =>
 				{
-					_uploadURL = response.Content;
-					callback(_uploadURL);
+					callback(response.Data);
 				});
 
 		}
 
-		public void CatchToss(String_callback callback)
+		public void CatchToss(Stream photoStream, long tossid, double longitude, double latitude, PhotoRecord_callback callback)
 		{
-			string fullURL = "catch";
+			RestClient onetimeClient = new RestClient();
 
-			RestRequest request = new RestRequest(fullURL, Method.GET);
+			var request = new RestRequest(_catchURL, Method.POST);
+			request.AddHeader("Accept", "*/*");
+			//request.AlwaysMultipartFormData = true;
+			request.AddParameter("toss", tossid);
+			request.AddParameter("long", longitude);
+			request.AddParameter("lat", latitude);
+			request.AddFile("file", ReadToEnd(photoStream), "file", "image/jpeg");
 
-			apiClient.ExecuteAsync(request, (response) =>
+			onetimeClient.ExecuteAsync(request, (response) =>
 				{
-					_uploadURL = response.Content;
-					callback(_uploadURL);
+					if (response.StatusCode == HttpStatusCode.OK)
+					{
+						PhotoRecord newRec = response.Content.FromJson<PhotoRecord>();
+						callback(newRec);
+					}
+					else
+					{
+						//error ocured during upload
+						callback(null);
+					}
 				});
-
 		}
 
 		public void GetTossStatus(String_callback callback)
@@ -215,15 +232,18 @@ namespace PhotoToss.Core
 
 
 
-        public void UploadImage(Stream photoStream, string caption, string tags, PhotoRecord_callback callback)
+        public void UploadImage(Stream photoStream, string caption, string tags, double longitude, double latitude, PhotoRecord_callback callback)
         {
             RestClient onetimeClient = new RestClient();
+			onetimeClient.CookieContainer = apiClient.CookieContainer;
 
             var request = new RestRequest(_uploadURL, Method.POST);
             request.AddHeader("Accept", "*/*");
             //request.AlwaysMultipartFormData = true;
             request.AddParameter("caption", caption);
             request.AddParameter("tags", tags);
+			request.AddParameter("long", longitude);
+			request.AddParameter("lat", latitude);
             request.AddFile("file", ReadToEnd(photoStream), "file", "image/jpeg");
 
             onetimeClient.ExecuteAsync(request, (response) =>

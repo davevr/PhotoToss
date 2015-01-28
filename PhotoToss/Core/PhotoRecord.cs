@@ -6,7 +6,7 @@ namespace PhotoToss.Core
 {
     public class PhotoRecord
     {
-        public string id {get; set;}
+        public long id {get; set;}
         public string caption { get; set; }
         public long totalshares { get; set; }
         public string ownername { get; set; }
@@ -36,7 +36,7 @@ namespace PhotoToss.Core
         public static PhotoRecord MakeSample()
         {
             PhotoRecord newRec = new PhotoRecord();
-            newRec.id = "0";
+            newRec.id = 0L;
             newRec.caption = "some image";
             newRec.totalshares = 1000;
             newRec.ownerid = "0";

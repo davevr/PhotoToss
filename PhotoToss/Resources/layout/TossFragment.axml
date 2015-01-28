@@ -1,47 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:pop="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     android:minWidth="25px"
     android:minHeight="25px"
+    android:weightSum="1"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:id="@+id/scrollView1">
-    <LinearLayout
-        android:orientation="vertical"
+    android:layout_height="fill_parent">
+    <ImageView
+        android:src="@drawable/car"
+        android:layout_width="fill_parent"
+        android:adjustViewBounds="true"
+        android:id="@+id/aztekView"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_alignParentTop="true"
+        android:layout_margin="8dp" />
+    <Button
+        android:text="Toss"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:background="@color/PT_dark_orange">
-        <ImageView
-            android:src="@drawable/car"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:id="@+id/aztekView"
-            android:layout_margin="8dp" />
-        <satellitemenu.SatelliteMenuButton
-            pop:speed="250"
-            pop:radius="200dp"
-            android:id="@+id/menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|left"
-            android:layout_margin="8dp">
-            <ImageView
-                android:id="@+id/popoutMenu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_toss"
-                android:layout_gravity="bottom|left"
-                android:contentDescription="@string/empty" />
-        </satellitemenu.SatelliteMenuButton>
-        <Button
-            android:text="Toss"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/tossButton"
-            android:background="@color/PT_light_teal"
-            android:layout_margin="16dp" />
-    </LinearLayout>
-</ScrollView>
+        android:id="@+id/tossButton"
+        android:background="@color/PT_light_teal"
+        android:layout_margin="16dp"
+        android:layout_gravity="bottom" />
+</LinearLayout>

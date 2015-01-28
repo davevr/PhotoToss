@@ -1233,32 +1233,32 @@ namespace PhotoToss
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f080065
-			public const int AboutBtn = 2131230821;
-			
-			// aapt resource value: 0x7f08005a
-			public const int AddTagBtn = 2131230810;
-			
 			// aapt resource value: 0x7f080063
-			public const int CatchButton = 2131230819;
+			public const int AboutBtn = 2131230819;
+			
+			// aapt resource value: 0x7f080058
+			public const int AddTagBtn = 2131230808;
+			
+			// aapt resource value: 0x7f080061
+			public const int CatchButton = 2131230817;
 			
 			// aapt resource value: 0x7f080040
 			public const int ItemName = 2131230784;
 			
-			// aapt resource value: 0x7f080061
-			public const int MainMenu = 2131230817;
+			// aapt resource value: 0x7f08005f
+			public const int MainMenu = 2131230815;
 			
-			// aapt resource value: 0x7f080059
-			public const int NewTagText = 2131230809;
+			// aapt resource value: 0x7f080057
+			public const int NewTagText = 2131230807;
+			
+			// aapt resource value: 0x7f080060
+			public const int PhotoButton = 2131230816;
 			
 			// aapt resource value: 0x7f080062
-			public const int PhotoButton = 2131230818;
+			public const int SettingsBtn = 2131230818;
 			
-			// aapt resource value: 0x7f080064
-			public const int SettingsBtn = 2131230820;
-			
-			// aapt resource value: 0x7f08005b
-			public const int UploadBtn = 2131230811;
+			// aapt resource value: 0x7f080059
+			public const int UploadBtn = 2131230809;
 			
 			// aapt resource value: 0x7f080031
 			public const int action_bar = 2131230769;
@@ -1311,8 +1311,8 @@ namespace PhotoToss
 			// aapt resource value: 0x7f080013
 			public const int beginning = 2131230739;
 			
-			// aapt resource value: 0x7f08005f
-			public const int buttonZxingFlash = 2131230815;
+			// aapt resource value: 0x7f08005d
+			public const int buttonZxingFlash = 2131230813;
 			
 			// aapt resource value: 0x7f080047
 			public const int captionText = 2131230791;
@@ -1323,8 +1323,8 @@ namespace PhotoToss
 			// aapt resource value: 0x7f080017
 			public const int collapseActionView = 2131230743;
 			
-			// aapt resource value: 0x7f080060
-			public const int contentFrame = 2131230816;
+			// aapt resource value: 0x7f08005e
+			public const int contentFrame = 2131230814;
 			
 			// aapt resource value: 0x7f080052
 			public const int createBtn = 2131230802;
@@ -1401,17 +1401,14 @@ namespace PhotoToss
 			// aapt resource value: 0x7f08004a
 			public const int linearLayout1 = 2131230794;
 			
-			// aapt resource value: 0x7f08005d
-			public const int linearLayout2 = 2131230813;
+			// aapt resource value: 0x7f08005b
+			public const int linearLayout2 = 2131230811;
 			
 			// aapt resource value: 0x7f080009
 			public const int listMode = 2131230729;
 			
 			// aapt resource value: 0x7f080025
 			public const int list_item = 2131230757;
-			
-			// aapt resource value: 0x7f080055
-			public const int menu = 2131230805;
 			
 			// aapt resource value: 0x7f080015
 			public const int middle = 2131230741;
@@ -1430,9 +1427,6 @@ namespace PhotoToss
 			
 			// aapt resource value: 0x7f08004f
 			public const int password2 = 2131230799;
-			
-			// aapt resource value: 0x7f080056
-			public const int popoutMenu = 2131230806;
 			
 			// aapt resource value: 0x7f080048
 			public const int popoutMenuItem = 2131230792;
@@ -1506,23 +1500,23 @@ namespace PhotoToss
 			// aapt resource value: 0x7f08000b
 			public const int tabMode = 2131230731;
 			
-			// aapt resource value: 0x7f080058
-			public const int tagsField = 2131230808;
+			// aapt resource value: 0x7f080056
+			public const int tagsField = 2131230806;
 			
 			// aapt resource value: 0x7f08003f
 			public const int textView1 = 2131230783;
 			
-			// aapt resource value: 0x7f08005c
-			public const int textView2 = 2131230812;
+			// aapt resource value: 0x7f08005a
+			public const int textView2 = 2131230810;
 			
-			// aapt resource value: 0x7f08005e
-			public const int textView3 = 2131230814;
+			// aapt resource value: 0x7f08005c
+			public const int textView3 = 2131230812;
 			
 			// aapt resource value: 0x7f080027
 			public const int title = 2131230759;
 			
-			// aapt resource value: 0x7f080057
-			public const int tossButton = 2131230807;
+			// aapt resource value: 0x7f080055
+			public const int tossButton = 2131230805;
 			
 			// aapt resource value: 0x7f080008
 			public const int up = 2131230728;
