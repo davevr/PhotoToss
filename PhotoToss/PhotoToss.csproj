@@ -169,24 +169,21 @@
     <AndroidResource Include="Resources\drawable\tosstopus.png" />
   </ItemGroup>
   <ItemGroup>
+    <XamarinComponentReference Include="restsharp">
+      <Visible>False</Visible>
+      <Version>105.0.1.0</Version>
+      <InstallationInProgress>True</InstallationInProgress>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="servicestacktext">
+      <Visible>False</Visible>
+      <Version>3.9.61.1</Version>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="xamandroidsupportv4-18">
       <Version>21.0.3.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
     <XamarinComponentReference Include="xamandroidsupportv7appcompat">
       <Version>21.0.3.0</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="zxing.net.mobile">
-      <Version>1.4.7</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="restsharp">
-      <Version>104.4.0.1</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="servicestacktext">
-      <Version>3.9.61.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
     <XamarinComponentReference Include="urlimageviewhelper">
@@ -196,6 +193,10 @@
     <XamarinComponentReference Include="satellite-menu">
       <Version>1.2.1.0</Version>
       <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="zxing.net.mobile">
+      <Visible>False</Visible>
+      <Version>1.4.7.2</Version>
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup />

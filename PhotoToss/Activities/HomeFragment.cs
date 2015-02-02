@@ -74,7 +74,7 @@ namespace PhotoToss
 							{
 
 								this.PhotoList.Clear();
-								if (userImageList.Count == 0) 
+								if ((userImageList == null) || (userImageList.Count == 0))
 								{
 									imageGrid.Visibility = ViewStates.Invisible;
 								} 

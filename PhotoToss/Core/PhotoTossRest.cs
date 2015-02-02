@@ -22,10 +22,11 @@ namespace PhotoToss.Core
     {
         private RestClient apiClient;
         private static PhotoTossRest _singleton = null;
-		private string apiPath = "http://phototoss-server-01.appspot.com/api/";  //"http://localhost:8080/api/";  //"http://phototoss-server-01.appspot.com/api/";//"http://127.0.0.1:8080/api/"; //"http://phototoss-server-01.appspot.com/api/";//"http://www.photostore.com/api/";
+        private string apiPath = "http://phototoss-server-01.appspot.com/api/";  //"http://localhost:8080/api/";  //"http://phototoss-server-01.appspot.com/api/";//"http://127.0.0.1:8080/api/"; //"http://phototoss-server-01.appspot.com/api/";//"http://www.photostore.com/api/";
         //private Random rndBase = new Random();
         private string _uploadURL;
 		private string _catchURL;
+        private string _userImageURL;
 		private User _currentUser = null;
 		public PhotoRecord CurrentImage { get; set; }
 
@@ -128,7 +129,7 @@ namespace PhotoToss.Core
 
         public void GetUploadURL(String_callback callback)
         {
-            string fullURL = "uploadURL";
+            string fullURL = "image/upload";
 
             RestRequest request = new RestRequest(fullURL, Method.GET);
 
@@ -140,9 +141,23 @@ namespace PhotoToss.Core
 
         }
 
+        public void GetUserImageUploadURL(String_callback callback)
+        {
+            string fullURL = "user/image";
+
+            RestRequest request = new RestRequest(fullURL, Method.GET);
+
+            apiClient.ExecuteAsync(request, (response) =>
+            {
+                _userImageURL = response.Content;
+                callback(_userImageURL);
+            });
+
+        }
+
 		public void GetCatchURL(String_callback callback)
 		{
-			string fullURL = "catchURL";
+			string fullURL = "catch";
 
 			RestRequest request = new RestRequest(fullURL, Method.GET);
 
@@ -260,6 +275,30 @@ namespace PhotoToss.Core
                 }
             });
         }
+
+        public void UploadUserImage(Stream photoStream, string caption, string tags, double longitude, double latitude, String_callback callback)
+        {
+            RestClient onetimeClient = new RestClient();
+            onetimeClient.CookieContainer = apiClient.CookieContainer;
+
+            var request = new RestRequest(_userImageURL, Method.POST);
+            request.AddHeader("Accept", "*/*");
+            request.AddFile("file", ReadToEnd(photoStream), "file", "image/jpeg");
+
+            onetimeClient.ExecuteAsync(request, (response) =>
+            {
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    callback(response.Content);
+                }
+                else
+                {
+                    //error ocured during upload
+                    callback(null);
+                }
+            });
+        }
+
 
         public byte[] ReadToEnd(System.IO.Stream stream)
         {
