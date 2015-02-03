@@ -96,7 +96,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginRight="32dp"
             android:gravity="center"
-            android:textColor="@color/PT_light_orange"
+            android:textColor="@color/PT_dark_orange"
             android:textSize="18dp"
             android:textStyle="bold" />
     </LinearLayout>

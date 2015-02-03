@@ -66,7 +66,9 @@ namespace PhotoToss.Core
 					{
 						List<PhotoRecord> imageList = response.Data;
 
-					 	callback(imageList);
+						//imageList.Sort(objListOrder.OrderBy(o=>o.OrderDate).ToList();
+
+						callback(imageList.OrderByDescending(o => o.created).ToList());
 					}
 					else
 						callback(null);
@@ -183,7 +185,6 @@ namespace PhotoToss.Core
 					_uploadURL = response.Content;
 					callback(_uploadURL);
 				});
-
 		}
 
 
@@ -201,14 +202,14 @@ namespace PhotoToss.Core
 				{
 					callback(response.Data);
 				});
-
 		}
 
 		public void CatchToss(Stream photoStream, long tossid, double longitude, double latitude, PhotoRecord_callback callback)
 		{
-			RestClient onetimeClient = new RestClient();
+			RestClient onetimeClient = new RestClient(_catchURL);
+			onetimeClient.CookieContainer = apiClient.CookieContainer;
 
-			var request = new RestRequest(_catchURL, Method.POST);
+			var request = new RestRequest("", Method.POST);
 			request.AddHeader("Accept", "*/*");
 			//request.AlwaysMultipartFormData = true;
 			request.AddParameter("toss", tossid);
@@ -249,10 +250,10 @@ namespace PhotoToss.Core
 
         public void UploadImage(Stream photoStream, string caption, string tags, double longitude, double latitude, PhotoRecord_callback callback)
         {
-            RestClient onetimeClient = new RestClient();
+			RestClient onetimeClient = new RestClient(_uploadURL);
 			onetimeClient.CookieContainer = apiClient.CookieContainer;
 
-            var request = new RestRequest(_uploadURL, Method.POST);
+            var request = new RestRequest("", Method.POST);
             request.AddHeader("Accept", "*/*");
             //request.AlwaysMultipartFormData = true;
             request.AddParameter("caption", caption);
@@ -278,10 +279,10 @@ namespace PhotoToss.Core
 
         public void UploadUserImage(Stream photoStream, string caption, string tags, double longitude, double latitude, String_callback callback)
         {
-            RestClient onetimeClient = new RestClient();
+			RestClient onetimeClient = new RestClient(_userImageURL);
             onetimeClient.CookieContainer = apiClient.CookieContainer;
 
-            var request = new RestRequest(_userImageURL, Method.POST);
+            var request = new RestRequest("", Method.POST);
             request.AddHeader("Accept", "*/*");
             request.AddFile("file", ReadToEnd(photoStream), "file", "image/jpeg");
 

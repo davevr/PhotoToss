@@ -123,7 +123,7 @@ namespace PhotoToss.HelpingClasses
         }
         public static string GetPathToImage(Activity activity, Android.Net.Uri uri)
         {
-            Boolean isKitKat = Build.VERSION.SdkInt >= Build.VERSION_CODES.Kitkat;
+			Boolean isKitKat = Build.VERSION.SdkInt >= BuildVersionCodes.Kitkat;
 
             if (isKitKat && DocumentsContract.IsDocumentUri(activity, uri))
             {

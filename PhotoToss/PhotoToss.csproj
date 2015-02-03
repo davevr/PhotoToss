@@ -39,12 +39,6 @@
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
-    <Reference Include="RestSharp.MonoDroid">
-      <HintPath>Components\restsharp-104.4.0.1\lib\android\RestSharp.MonoDroid.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Text.XamarinAndrod">
-      <HintPath>Components\servicestacktext-3.9.61.0\lib\android\ServiceStack.Text.XamarinAndrod.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -55,18 +49,24 @@
     <Reference Include="Xamarin.Android.Support.v7.AppCompat">
       <HintPath>packages\Xamarin.Android.Support.v7.AppCompat.21.0.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
     </Reference>
-    <Reference Include="zxing.monoandroid">
-      <HintPath>Components\zxing.net.mobile-1.4.7\lib\android\zxing.monoandroid.dll</HintPath>
-    </Reference>
-    <Reference Include="ZXing.Net.Mobile">
-      <HintPath>Components\zxing.net.mobile-1.4.7\lib\android\ZXing.Net.Mobile.dll</HintPath>
-    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="UrlImageViewHelper">
       <HintPath>Components\urlimageviewhelper-1.0.4\lib\android\UrlImageViewHelper.dll</HintPath>
     </Reference>
     <Reference Include="SatelliteMenu">
       <HintPath>Components\satellite-menu-1.2.1.0\lib\android\SatelliteMenu.dll</HintPath>
+    </Reference>
+    <Reference Include="ZXing.Net.Mobile">
+      <HintPath>Components\zxing.net.mobile-1.4.7.2\lib\android\ZXing.Net.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.monoandroid">
+      <HintPath>Components\zxing.net.mobile-1.4.7.2\lib\android\zxing.monoandroid.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text.XamarinAndrod">
+      <HintPath>Components\servicestacktext-3.9.61.1\lib\android\ServiceStack.Text.XamarinAndrod.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp.MonoDroid">
+      <HintPath>Components\restsharp-105.0.1.0\lib\android\RestSharp.MonoDroid.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +91,7 @@
     <Compile Include="Activities\FirstRunActivity.cs" />
     <Compile Include="Core\TossRecord.cs" />
     <Compile Include="HelperClasses\ScaleImageView.cs" />
+    <Compile Include="HelperClasses\BitmapHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\RammettoOne-Regular.ttf" />
@@ -169,15 +170,6 @@
     <AndroidResource Include="Resources\drawable\tosstopus.png" />
   </ItemGroup>
   <ItemGroup>
-    <XamarinComponentReference Include="restsharp">
-      <Visible>False</Visible>
-      <Version>105.0.1.0</Version>
-      <InstallationInProgress>True</InstallationInProgress>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="servicestacktext">
-      <Visible>False</Visible>
-      <Version>3.9.61.1</Version>
-    </XamarinComponentReference>
     <XamarinComponentReference Include="xamandroidsupportv4-18">
       <Version>21.0.3.0</Version>
       <Visible>False</Visible>
@@ -195,8 +187,16 @@
       <Visible>False</Visible>
     </XamarinComponentReference>
     <XamarinComponentReference Include="zxing.net.mobile">
-      <Visible>False</Visible>
       <Version>1.4.7.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="servicestacktext">
+      <Version>3.9.61.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="restsharp">
+      <Version>105.0.1.0</Version>
+      <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup />

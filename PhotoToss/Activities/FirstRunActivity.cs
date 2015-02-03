@@ -111,6 +111,12 @@ namespace PhotoToss
 
         }
 
+		protected override void OnStop ()
+		{
+			progressDlg.Dismiss ();
+			base.OnStop ();
+		}
+
         void HandleTextValueChanged(object sender, Android.Text.AfterTextChangedEventArgs e)
         {
             string usernameText = usernameField.Text;

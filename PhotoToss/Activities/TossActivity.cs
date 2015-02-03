@@ -31,8 +31,10 @@ namespace PhotoToss
 
         protected override void OnCreate(Bundle bundle)
         {
+
 			RequestWindowFeature (WindowFeatures.NoTitle);
 			Window.SetFlags (WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
+			Window.SetFlags (WindowManagerFlags.Secure, WindowManagerFlags.Secure);
             base.OnCreate(bundle);
 
             // Create your application here
@@ -104,8 +106,8 @@ namespace PhotoToss
 				writer.Format = BarcodeFormat.AZTEC;
 				writer.Renderer = new BitmapRenderer();
 
-				var widthInDp = ConvertPixelsToDp(metrics.WidthPixels);
-				var heightInDp = ConvertPixelsToDp(metrics.HeightPixels);
+				//var widthInDp = ConvertPixelsToDp(metrics.WidthPixels);
+				//var heightInDp = ConvertPixelsToDp(metrics.HeightPixels);
 				string baseURL = "http://phototoss.com/share/";
 				string guid = theToss.id.ToString();
 				string url = baseURL + guid;

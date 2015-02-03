@@ -53,7 +53,6 @@ namespace PhotoToss
 
         void imageGrid_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
-			Intent viewIntent = new Intent (this.Activity, (typeof(TossActivity)));
 			PhotoTossRest.Instance.CurrentImage = PhotoList [e.Position];
             this.Activity.StartActivity(typeof(TossActivity));
         }
@@ -72,7 +71,6 @@ namespace PhotoToss
 					{
 						this.Activity.RunOnUiThread(() =>
 							{
-
 								this.PhotoList.Clear();
 								if ((userImageList == null) || (userImageList.Count == 0))
 								{
@@ -80,9 +78,9 @@ namespace PhotoToss
 								} 
 								else 
 								{
+									imageGrid.Visibility = ViewStates.Visible;
 									PhotoList.AddRange(userImageList);
 									int numItems = imageGrid.Adapter.Count;
-									imageGrid.Visibility = ViewStates.Visible;
 									((PhotoRecordAdapter)imageGrid.Adapter).NotifyDataSetChanged();
 									imageGrid.InvalidateViews ();
 
@@ -97,7 +95,7 @@ namespace PhotoToss
 
         public void AddImage(PhotoRecord newRec)
         {
-            PhotoList.Add(newRec);
+			PhotoList.Insert (0, newRec);
             this.Activity.RunOnUiThread(() =>
                 {
                     imageGrid.Visibility = ViewStates.Visible;
@@ -111,7 +109,7 @@ namespace PhotoToss
         {
             private readonly Context context;
             private readonly HomeFragment home;
-            private int itemWidth = 256;
+			private int itemWidth = 256, profileWidth = 64;
 
             public PhotoRecordAdapter(Context c, HomeFragment theFragment)
             {
@@ -121,6 +119,7 @@ namespace PhotoToss
                 float margin = 0f;
                 float marginPixels = margin * context.Resources.DisplayMetrics.Density;
                 itemWidth = (int)(((float)screenWidth - (marginPixels * 3f)) / 2f);
+				profileWidth = (int)((float)profileWidth * context.Resources.DisplayMetrics.Density);
 
 
                 home = theFragment;
@@ -150,7 +149,7 @@ namespace PhotoToss
             public override View GetView(int position, View convertView, ViewGroup parent)
             {
 				Random	rnd = new Random (position);
-                ImageView imageView;
+				ImageView imageView, userView;
                 TextView captionText;
                 View curView;
                 PhotoRecord curRec = home.PhotoList[position];
@@ -172,9 +171,16 @@ namespace PhotoToss
                 }
 				curView.Rotation = ((float)(50 - rnd.Next (100)))/ 10.0f;
                 imageView = curView.FindViewById<ImageView>(Resource.Id.imageView);
+				userView = curView.FindViewById<ImageView> (Resource.Id.profileImage);
                 captionText = curView.FindViewById<TextView>(Resource.Id.captionText);
                 imageView.SetScaleType(ImageView.ScaleType.CenterCrop);
-
+				if (curRec.ownerid == PhotoTossRest.Instance.CurrentUser.id) {
+					userView.Visibility = ViewStates.Gone;
+				} else {
+					// TO DO:  Make this one round..
+					userView.Visibility = ViewStates.Visible;
+					Koush.UrlImageViewHelper.SetUrlDrawable (userView, curRec.catchUrl + "=s" + profileWidth.ToString(), Resource.Drawable.ic_camera);
+				}
                 captionText.Text = curRec.caption;
 				Koush.UrlImageViewHelper.SetUrlDrawable (imageView, curRec.imageUrl + "=s" + itemWidth.ToString(), Resource.Drawable.ic_camera);
 

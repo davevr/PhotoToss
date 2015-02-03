@@ -12,13 +12,14 @@ using Android.Widget;
 using Android.Net;
 using Android.Locations;
 using PhotoToss.Core;
+using Android.Graphics;
 
 using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
 
 namespace PhotoToss
 {
-    [Activity(Label = "Upload to PhotoToss", Icon = "@drawable/iconnoborder", Theme = "@style/Theme.AppCompat.Light", ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
+    [Activity(ScreenOrientation = Android.Content.PM.ScreenOrientation.Portrait)]
     public class UploadActivity : Activity
     {
         private ImageView imageView;
@@ -27,9 +28,14 @@ namespace PhotoToss
         private EditText newTagText;
         private Button addTagBtn;
         private Button uploadBtn;
+		private int MAX_IMAGE_SIZE = 2048;
+		private Bitmap scaledBitmap;
+		private ProgressDialog progressDlg;
 
         protected override void OnCreate(Bundle bundle)
         {
+			RequestWindowFeature (WindowFeatures.NoTitle);
+			Window.SetFlags (WindowManagerFlags.Fullscreen, WindowManagerFlags.Fullscreen);
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.UploadActivity);
@@ -41,31 +47,56 @@ namespace PhotoToss
             addTagBtn = FindViewById<Button>(Resource.Id.AddTagBtn);
             uploadBtn = FindViewById<Button>(Resource.Id.UploadBtn);
 
-            imageView.SetImageURI(Uri.FromFile(MainActivity._file));
+			scaledBitmap = BitmapHelper.LoadAndResizeBitmap (MainActivity._file.AbsolutePath, MAX_IMAGE_SIZE);
+			imageView.SetImageBitmap (scaledBitmap);
 
 
             uploadBtn.Click += uploadBtn_Click;
 
+			progressDlg = new ProgressDialog(this);
+			progressDlg.SetProgressStyle(ProgressDialogStyle.Spinner);
         }
 
+		protected override void OnStop ()
+		{
+			progressDlg.Dismiss ();
+			base.OnStop ();
+		}
 
         void uploadBtn_Click(object sender, EventArgs e)
         {
-            System.IO.Stream photoStream = System.IO.File.OpenRead(MainActivity._file.AbsolutePath);
-            string caption = captionText.Text;
-            string tags = tagField.Text;
-			double longitude = MainActivity._lastLocation.Longitude;
-			double latitude = MainActivity._lastLocation.Latitude;
+			progressDlg.SetMessage("uploading image...");
+			progressDlg.Show();
 
-            if (photoStream != null)
-            {
-                //System.IO.Stream fileStream = System.IO.File.OpenRead(imgPath);
-                PhotoTossRest.Instance.UploadImage(photoStream, caption, tags, longitude, latitude, (newRec) =>
-                    {
-                        MainActivity._uploadPhotoRecord = newRec;
-                        Finish();
-                    });
-            }
+			using (System.IO.MemoryStream photoStream = new System.IO.MemoryStream ()) {
+				scaledBitmap.Compress (Bitmap.CompressFormat.Jpeg, 90, photoStream);
+				photoStream.Flush ();
+
+				string caption = captionText.Text;
+				string tags = tagField.Text;
+				double longitude = MainActivity._lastLocation.Longitude;
+				double latitude = MainActivity._lastLocation.Latitude;
+
+
+				PhotoTossRest.Instance.UploadImage (photoStream, caption, tags, longitude, latitude, (newRec) => {
+
+					if (newRec != null) {
+						MainActivity._file.Delete ();
+						MainActivity._uploadPhotoRecord = newRec;
+						Bundle conData = new Bundle ();
+						conData.PutString ("param_result", "Thanks Thanks");
+						Intent intent = new Intent ();
+						intent.PutExtras (conData);
+						SetResult (Result.Ok, intent);
+						Finish ();
+					} else {
+						RunOnUiThread (() => {
+							progressDlg.Hide();
+							Toast.MakeText (this, "Image upload failed, please try again", ToastLength.Long).Show ();
+						});
+					}
+				});
+			}
         }
     }
 }

@@ -102,15 +102,12 @@ namespace PhotoToss
 
         class MyDrawerToggle : Android.Support.V7.App.ActionBarDrawerToggle
         {
-            private string openString, closeString;
             private MainActivity baseActivity;
 
             public MyDrawerToggle(Activity activity, DrawerLayout drawerLayout, int openDrawerContentDescRes, int closeDrawerContentDescRes) :
                 base(activity, drawerLayout, openDrawerContentDescRes, closeDrawerContentDescRes)
             {
                 baseActivity = (MainActivity)activity;
-                openString = baseActivity.Resources.GetString(openDrawerContentDescRes);
-                closeString = baseActivity.Resources.GetString(closeDrawerContentDescRes);
             }
             public override void OnDrawerOpened(View drawerView)
             {
@@ -310,7 +307,7 @@ namespace PhotoToss
                 }
                 catch (Exception e)
                 {
-                   
+					System.Console.WriteLine (e.Message);
                 }
             }
             return base.OnMenuOpened(featureId, menu);
@@ -547,7 +544,14 @@ namespace PhotoToss
 
 					PhotoTossRest.Instance.CatchToss(photoStream, tossId, longitude, latitude, (newRec) => 
 						{
-							homePage.AddImage(newRec);
+							if (newRec != null)
+								homePage.AddImage(newRec);
+							else
+							{
+								RunOnUiThread(()=> {
+									Toast.MakeText(this, "Catch failed.  Please try again.", ToastLength.Long).Show();
+								});
+							}
 
 						});
 				});
@@ -582,7 +586,7 @@ namespace PhotoToss
 
             _file = new File(_dir, String.Format("PhotoTossPhoto_{0}.jpg", Guid.NewGuid()));
 
-            intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(_file));// MediaStore.Images.Media.ExternalContentUri);
+            intent.PutExtra(MediaStore.ExtraOutput, Uri.FromFile(_file));
 
             StartActivityForResult(intent, Utilities.PHOTO_CAPTURE_EVENT);
         }

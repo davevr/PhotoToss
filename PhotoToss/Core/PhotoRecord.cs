@@ -10,7 +10,7 @@ namespace PhotoToss.Core
         public string caption { get; set; }
         public long totalshares { get; set; }
         public string ownername { get; set; }
-        public string ownerid { get; set; }
+        public long ownerid { get; set; }
         public List<string> tags { get; set; }
         public string sharedfromname { get; set; }
         public string sharedfromid { get; set; }
@@ -39,7 +39,7 @@ namespace PhotoToss.Core
             newRec.id = 0L;
             newRec.caption = "some image";
             newRec.totalshares = 1000;
-            newRec.ownerid = "0";
+            newRec.ownerid = 0;
             newRec.ownername = "davevr";
             newRec.tags = new List<string>() { "sheep", "nose", "fred" };
             newRec.sharedfromid = "0";
