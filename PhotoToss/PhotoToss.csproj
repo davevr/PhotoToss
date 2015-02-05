@@ -68,6 +68,21 @@
     <Reference Include="RestSharp.MonoDroid">
       <HintPath>Components\restsharp-105.0.1.0\lib\android\RestSharp.MonoDroid.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.MediaRouter">
+      <HintPath>packages\Xamarin.Android.Support.v7.MediaRouter.21.0.3.0\lib\MonoAndroid403\Xamarin.Android.Support.v7.MediaRouter.dll</HintPath>
+    </Reference>
+    <Reference Include="GooglePlayServicesLib">
+      <HintPath>packages\Xamarin.GooglePlayServices.22.0.0.0\lib\MonoAndroid41\GooglePlayServicesLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Messaging.Android">
+      <HintPath>Components\azure-messaging-1.1.5.3\lib\android\Microsoft.WindowsAzure.Messaging.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="ByteSmith.WindowsAzure.Messaging.Android">
+      <HintPath>_external\ByteSmith.WindowsAzure.Messaging.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="GCM.Client">
+      <HintPath>Components\GCMClient-1.0\lib\android\GCM.Client.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activities\BrowseFragment.cs" />
@@ -92,6 +107,9 @@
     <Compile Include="Core\TossRecord.cs" />
     <Compile Include="HelperClasses\ScaleImageView.cs" />
     <Compile Include="HelperClasses\BitmapHelper.cs" />
+    <Compile Include="HelperClasses\MyGCMBootReceiver.cs" />
+    <Compile Include="HelperClasses\MyGCMBroadcastReceiver.cs" />
+    <Compile Include="HelperClasses\RemoteNotificationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\RammettoOne-Regular.ttf" />
@@ -141,6 +159,13 @@
     <AndroidResource Include="Resources\layout\SignInLayout.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <None Include="_external\ByteSmith.WindowsAzure.Messaging.Android.dll" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_notify_white.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_notify_white.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_notify_white.png" />
+    <AndroidResource Include="Resources\drawable\ic_notify_white.png" />
+    <AndroidResource Include="Resources\drawable\ic_notify_color.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_notify_white.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />
@@ -198,6 +223,18 @@
       <Version>105.0.1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
+    <XamarinComponentReference Include="azure-messaging">
+      <Version>1.1.5.3</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="googleplayservices">
+      <Version>22.0.0.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="GCMClient">
+      <Version>1.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
@@ -208,4 +245,10 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="_external\" />
+    <Folder Include="Resources\drawable-xhdpi\" />
+    <Folder Include="Resources\drawable-xxhdpi\" />
+    <Folder Include="Resources\drawable-xxxhdpi\" />
+  </ItemGroup>
 </Project>
