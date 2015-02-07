@@ -33,6 +33,10 @@ using ZXing.Mobile;
 
 using PhotoToss.Core;
 
+using ByteSmith.WindowsAzure.Messaging;
+using Gcm.Client;
+
+
 using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
 using Debug = System.Diagnostics.Debug;
@@ -60,6 +64,9 @@ namespace PhotoToss
         private File _dir;
         public static File _file;
         public static PhotoRecord _uploadPhotoRecord;
+		public const string SENDER_ID = "865065760693";
+		public const string ConnectionString = "Endpoint=sb://phototossnotify-ns.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=FwWsviEIwwCK5vSg0kNiKcJs9GKuz70mXxYBGDYIvIU=";
+		public const string NotificationHubPath = "phototossnotify";
 
         public static GoogleAnalytics analytics = null;
         MobileBarcodeScanner scanner;
@@ -651,6 +658,19 @@ namespace PhotoToss
             analytics = new GoogleAnalytics(userAgent, maker, model, version, platform, uniqueId);
             analytics.StartSession();
         }
+
+		private void RegisterWithGCM()
+		{
+			// Check to ensure everything's setup right
+			GcmClient.CheckDevice(this);
+			GcmClient.CheckManifest(this);
+
+			// Register for push notifications
+			System.Diagnostics.Debug.WriteLine("Registering...");
+			GcmClient.Register(this, SENDER_ID);
+		}
+
+
         
 
 
