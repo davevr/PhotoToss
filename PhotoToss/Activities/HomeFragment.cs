@@ -19,7 +19,7 @@ using PhotoToss.Core;
 
 namespace PhotoToss
 {
-    public class HomeFragment : Fragment
+    public class HomeFragment : Android.Support.V4.App.Fragment
     {
         public MainActivity MainPage { get; set; }
         GridView imageGrid;

@@ -277,7 +277,34 @@ namespace PhotoToss.Core
             });
         }
 
-        public void UploadUserImage(Stream photoStream, string caption, string tags, double longitude, double latitude, String_callback callback)
+        public void UploadImageThumb(Stream photoStream, long imageId, String_callback callback)
+        {
+            RestClient onetimeClient = new RestClient(_uploadURL);
+            onetimeClient.CookieContainer = apiClient.CookieContainer;
+
+            var request = new RestRequest("", Method.POST);
+            request.AddHeader("Accept", "*/*");
+            //request.AlwaysMultipartFormData = true;
+            request.AddParameter("thumbnail", true);
+            request.AddParameter("imageid", imageId);
+            request.AddFile("file", ReadToEnd(photoStream), "file", "image/jpeg");
+
+            onetimeClient.ExecuteAsync(request, (response) =>
+            {
+                if (response.StatusCode == HttpStatusCode.OK)
+                {
+                    callback(response.Content);
+                }
+                else
+                {
+                    //error ocured during upload
+                    callback(null);
+                }
+            });
+        }
+
+
+        public void UploadUserImage(Stream photoStream, String_callback callback)
         {
 			RestClient onetimeClient = new RestClient(_userImageURL);
             onetimeClient.CookieContainer = apiClient.CookieContainer;

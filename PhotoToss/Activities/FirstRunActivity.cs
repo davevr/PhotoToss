@@ -11,23 +11,17 @@ using Android.Views;
 using Android.Widget;
 using Android.Support.V4.App;
 using Android.Graphics;
+using Android.Support.V4.View;
 
 using PhotoToss.Core;
 
 namespace PhotoToss
 {
 	[Activity(ScreenOrientation=Android.Content.PM.ScreenOrientation.Portrait )]
-    public class FirstRunActivity : Activity
+    public class FirstRunActivity : FragmentActivity
     {
-        private EditText usernameField;
-        private EditText passwordField;
-        private EditText confirmPassword;
-        private EditText emailField;
-        private Button signInBtn;
-        private Button createAccountBtn;
-        private TextView prepSignIn;
-        private TextView emailPrompt;
-        private ProgressDialog progressDlg;
+        private NonSwipeViewPager mPager;
+        private PagerAdapter mPagerAdapter;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -36,219 +30,88 @@ namespace PhotoToss
 
             base.OnCreate(bundle);
 
-            SetContentView(Resource.Layout.SignInLayout);
-
-            progressDlg = new ProgressDialog(this);
-            progressDlg.SetProgressStyle(ProgressDialogStyle.Spinner);
-
-            FindViewById<TextView>(Resource.Id.textView1).SetTypeface(MainActivity.bodyFace, TypefaceStyle.Normal);
-            usernameField = FindViewById<EditText>(Resource.Id.usernameField);
-            usernameField.SetTypeface(MainActivity.bodyFace, TypefaceStyle.Normal);
-            usernameField.AfterTextChanged += HandleTextValueChanged;
-
-            passwordField = FindViewById<EditText>(Resource.Id.password);
-            passwordField.SetTypeface(MainActivity.bodyFace, TypefaceStyle.Normal);
-            passwordField.AfterTextChanged += HandleTextValueChanged;
-
-            confirmPassword = FindViewById<EditText>(Resource.Id.password2);
-            confirmPassword.SetTypeface(MainActivity.bodyFace, TypefaceStyle.Normal);
-            confirmPassword.AfterTextChanged += HandleTextValueChanged;
-
-            emailPrompt = FindViewById<TextView>(Resource.Id.emailPrompt);
-            emailPrompt.SetTypeface(MainActivity.bodyFace, TypefaceStyle.Normal);
-
-            emailField = FindViewById<EditText>(Resource.Id.emailAddrField);
-            emailField.SetTypeface(MainActivity.bodyFace, TypefaceStyle.Normal);
-
-            createAccountBtn = FindViewById<Button>(Resource.Id.createBtn);
-            createAccountBtn.SetTypeface(MainActivity.bodyFace, TypefaceStyle.Normal);
-
-            createAccountBtn.Click += (snder, e) =>
-            {
-                progressDlg.SetMessage("signing in...");
-                progressDlg.Show();
-                string userName = usernameField.Text.Trim();
-                string password = passwordField.Text;
-                signInBtn.Enabled = false;
-                createAccountBtn.Enabled = false;
-
-
-                // sign in
-				PhotoTossRest.Instance.CreateAccount(userName, password, CreateAccountResultCallback);
-
-            };
-
-            prepSignIn = FindViewById<TextView>(Resource.Id.prepSignIn);
-            prepSignIn.SetTypeface(MainActivity.bodyFace, TypefaceStyle.Normal);
-
-            prepSignIn.Click += (object sender, EventArgs e) =>
-            {
-                PrepForSignIn();
-
-
-            };
-
-            signInBtn = FindViewById<Button>(Resource.Id.signInBtn);
-            signInBtn.SetTypeface(MainActivity.bodyFace, TypefaceStyle.Normal);
-            signInBtn.Visibility = ViewStates.Gone;
-
-            signInBtn.Click += (object sender, EventArgs e) =>
-            {
-                progressDlg.SetMessage("signing in...");
-                progressDlg.Show();
-                string userName = usernameField.Text.Trim();
-                string password = passwordField.Text;
-                signInBtn.Enabled = false;
-                createAccountBtn.Enabled = false;
-
-                // sign in
-				PhotoTossRest.Instance.Login(userName, password, SiginInResultCallback);
-            };
-
-            createAccountBtn.Enabled = false;
-            signInBtn.Enabled = false;
-
-
+            SetContentView(Resource.Layout.ViewPager);
+            mPager = FindViewById<NonSwipeViewPager>(Resource.Id.pager);
+            mPagerAdapter = new ScreenSlidePageAdapter(SupportFragmentManager);
+            mPager.Adapter = mPagerAdapter;
+            mPager.TouchEnabled = false;
         }
 
-		protected override void OnStop ()
-		{
-			progressDlg.Dismiss ();
-			base.OnStop ();
-		}
-
-        void HandleTextValueChanged(object sender, Android.Text.AfterTextChangedEventArgs e)
+        public void FinishSignin()
         {
-            string usernameText = usernameField.Text;
-            string passwordText = passwordField.Text;
-            string confirmText = confirmPassword.Text;
-            string emailText = emailField.Text;
+            SetResult(Result.Ok);
+            Finish();
+        }
 
-            if (String.IsNullOrEmpty(usernameText) || String.IsNullOrEmpty(passwordText) ||
-                (usernameText.Length < 3) || (passwordText.Length < 3))
+        public void FinishCreateAccount()
+        {
+            GoToNext();
+        }
+
+        public override void OnBackPressed()
+        {
+            if (mPager.CurrentItem == 0)
             {
-                signInBtn.Enabled = false;
-                createAccountBtn.Enabled = false;
-
+                //base.OnBackPressed();
             }
             else
             {
-                signInBtn.Enabled = true;
-
-                if (passwordText == confirmText)
-                    createAccountBtn.Enabled = true;
-                else
-                    createAccountBtn.Enabled = false;
+                mPager.CurrentItem--;
             }
         }
 
-        private void SiginInResultCallback(User result)
+        public void GoToNext()
         {
-
-            if (result != null)
-            {
-                MainActivity.analytics.PostLogin();
-                RunOnUiThread(() =>
-                {
-                    progressDlg.Hide();
-                    FinishSignin();
-                });
-            }
-            else
-            {
-                MainActivity.analytics.PostSessionError("signinfailed");
-
-                DisplayAlert("Sign in Failed", "Unable to sign in.  Check username and password");
-                RunOnUiThread(() =>
-                {
-                    progressDlg.Hide();
-                    signInBtn.Enabled = true;
-                    createAccountBtn.Enabled = true;
-                    HandleTextValueChanged(null, null);
-                });
-            }
-
+            mPager.CurrentItem++;
         }
 
-        private void CreateAccountResultCallback(User result)
+        private class ScreenSlidePageAdapter : FragmentStatePagerAdapter
         {
-            if (result == null)
-            {
-                MainActivity.analytics.PostRegisterUser();
-                RunOnUiThread(() =>
-	                {
-	                    progressDlg.Hide();
-	                   string emailAddress = emailField.Text.Trim();
+            private SignInFragment page1 = null;
+            private ProfileFragment page2 = null;
 
-	                    if (!String.IsNullOrEmpty(emailAddress))
-	                    {
-							PhotoTossRest.Instance.SetRecoveryEmail(emailAddress, (resultStr) =>
-	                        {
-								RunOnUiThread(() =>
-		                            {
-										FinishSignin();
-		                            });
-	                        });
-	                        
-	                    }
-	                    else
-	                    {
-							FinishSignin();
-	                    }
-	                        
-	                });
+            public ScreenSlidePageAdapter(Android.Support.V4.App.FragmentManager mgr)
+                : base(mgr)
+            {
+                // do nothing
             }
-            else
-            {
-                MainActivity.analytics.PostSessionError("registerfailed-");
 
-                DisplayAlert("Create Account Failed", "Unable to create account.  Check username");
-                RunOnUiThread(() =>
+            public override int Count
+            {
+                get { return 2; }
+            }
+
+            public override Android.Support.V4.App.Fragment GetItem(int position)
+            {
+                Android.Support.V4.App.Fragment newFragment = null;
+
+                switch (position)
                 {
-                    progressDlg.Hide();
-                    signInBtn.Enabled = true;
-                    createAccountBtn.Enabled = true;
-                    HandleTextValueChanged(null, null);
-                });
+                    case 0:
+                        // first page
+                        if (page1 == null)
+                        {
+                            page1 = new SignInFragment();
+                        }
+
+                        newFragment = page1;
+
+                        break;
+
+                    case 1:
+                        if (page2 == null)
+                        {
+                            page2 = new ProfileFragment();
+                            page2.IsInitialSignIn = true;
+                        }
+                        newFragment = page2;
+                        break;
+
+                  
+                }
+
+                return newFragment;
             }
         }
-
-        public void DisplayAlert(string titleString, string descString)
-        {
-            RunOnUiThread(() =>
-            {
-                AlertDialog alert = new AlertDialog.Builder(this).Create();
-                alert.SetTitle(titleString);
-                alert.SetMessage(descString);
-                alert.SetButton("ok", (sender, args) =>
-                {
-                    alert.Dismiss();
-                });
-                alert.Show();
-            });
-
-        }
-
-        void PrepForSignIn()
-        {
-            signInBtn.Visibility = ViewStates.Visible;
-            confirmPassword.Visibility = ViewStates.Gone;
-            emailPrompt.Visibility = ViewStates.Gone;
-            emailField.Visibility = ViewStates.Gone;
-            prepSignIn.Visibility = ViewStates.Gone;
-            createAccountBtn.Visibility = ViewStates.Gone;
-        }
-
-		void FinishSignin()
-		{
-			SetResult (Result.Ok);
-			Finish();
-		}
-
-		public override void OnBackPressed ()
-		{
-			//base.OnBackPressed ();
-		}
-
     }
 }

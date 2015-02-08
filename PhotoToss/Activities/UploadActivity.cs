@@ -13,6 +13,7 @@ using Android.Net;
 using Android.Locations;
 using PhotoToss.Core;
 using Android.Graphics;
+using Android.Media;
 
 using Environment = Android.OS.Environment;
 using Uri = Android.Net.Uri;
@@ -81,14 +82,27 @@ namespace PhotoToss
 				PhotoTossRest.Instance.UploadImage (photoStream, caption, tags, longitude, latitude, (newRec) => {
 
 					if (newRec != null) {
-						MainActivity._file.Delete ();
-						MainActivity._uploadPhotoRecord = newRec;
-						Bundle conData = new Bundle ();
-						conData.PutString ("param_result", "Thanks Thanks");
-						Intent intent = new Intent ();
-						intent.PutExtras (conData);
-						SetResult (Result.Ok, intent);
-						Finish ();
+                        // now we upload a thumbnail immediately
+                        PhotoTossRest.Instance.GetUploadURL((uploadStr) =>
+                            {
+                                Bitmap thumbnail = ThumbnailUtils.ExtractThumbnail(scaledBitmap, 64, 64);
+
+                                using (System.IO.MemoryStream thumbStream = new System.IO.MemoryStream())
+                                {
+                                    thumbnail.Compress(Bitmap.CompressFormat.Png, 100, thumbStream);
+                                    thumbStream.Flush();
+
+                                    PhotoTossRest.Instance.UploadImageThumb(thumbStream, newRec.id, (theStr) =>
+                                        {
+                                            if (!String.IsNullOrEmpty(theStr))
+                                                newRec.thumbnailurl = theStr;
+                                            MainActivity._file.Delete();
+                                            MainActivity._uploadPhotoRecord = newRec;
+                                            SetResult(Result.Ok, new Intent());
+                                            Finish();
+                                        });
+                                }
+                            });
 					} else {
 						RunOnUiThread (() => {
 							progressDlg.Hide();

@@ -28,7 +28,7 @@ namespace PhotoToss.Core
         public string receivedtags { get; set; }
         public string imageUrl { get; set; }
         public string catchUrl { get; set; }
-
+        public string thumbnailurl { get; set; }
         private object cachedImage = null;
         private object cachedCatchImage = null;
 

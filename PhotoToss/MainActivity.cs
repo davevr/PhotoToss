@@ -61,7 +61,7 @@ namespace PhotoToss
         private ProfileFragment profilePage;
         public static Typeface headlineFace;
         public static Typeface bodyFace;
-        private File _dir;
+        public static File _dir;
         public static File _file;
         public static PhotoRecord _uploadPhotoRecord;
 		public const string SENDER_ID = "865065760693";
@@ -372,12 +372,12 @@ namespace PhotoToss
             selectItem(e.Position);
         }
 
-        private Android.App.Fragment oldPage = null;
+        private Android.Support.V4.App.Fragment oldPage = null;
 
         private void selectItem(int position)
         {
-            Android.App.Fragment newPage = null;
-            var fragmentManager = this.FragmentManager;
+            Android.Support.V4.App.Fragment newPage = null;
+            var fragmentManager = this.SupportFragmentManager;
             var ft = fragmentManager.BeginTransaction();
             bool firstTime = false;
             string pageName = "";
@@ -620,6 +620,53 @@ namespace PhotoToss
 					}
 					break;
 
+                case Utilities.PROFILEIMAGE_CAPTURE_EVENT:
+                    ProgressDialog progressDlg = new ProgressDialog(this);
+                    RunOnUiThread(() =>
+                    {
+                        progressDlg.SetProgressStyle(ProgressDialogStyle.Spinner);
+                        progressDlg.SetMessage("uploading image...");
+                        progressDlg.Show();
+                    });
+
+                    PhotoTossRest.Instance.GetUserImageUploadURL((theURL) =>
+                    {
+                        using (System.IO.MemoryStream photoStream = new System.IO.MemoryStream())
+                        {
+                            int MAX_PROFILE_IMAGE_SIZE = 512;
+		                    Bitmap scaledBitmap;
+                            scaledBitmap = BitmapHelper.LoadAndCropBitmap(MainActivity._file.AbsolutePath, MAX_PROFILE_IMAGE_SIZE);
+			
+                            scaledBitmap.Compress(Bitmap.CompressFormat.Jpeg, 90, photoStream);
+                            photoStream.Flush();
+
+                            PhotoTossRest.Instance.UploadUserImage(photoStream, (newRec) =>
+                            {
+                                if (newRec != null)
+                                {
+                                    PhotoTossRest.Instance.CurrentUser.imageurl = newRec;
+                                    RunOnUiThread(() =>
+                                    {
+                                        progressDlg.Hide();
+                                        if ((profilePage != null) && (oldPage == profilePage))
+                                            profilePage.UpdateUserImage();
+                                          
+                                    });
+                                }
+                                else
+                                {
+                                    RunOnUiThread(() =>
+                                    {
+                                        progressDlg.Hide();
+                                        Toast.MakeText(this, "Image upload failed, please try again", ToastLength.Long).Show();
+                                    });
+                                }
+                            });
+                        }
+
+                    });
+                    break;
+
 				case Utilities.SIGNIN_INTENT:
 					// Complete the signin
 					InitForSignIn ();
@@ -670,6 +717,21 @@ namespace PhotoToss
 			GcmClient.Register(this, SENDER_ID);
 		}
 
+        public static void DisplayAlert(Activity activity, string titleString, string descString)
+        {
+            activity.RunOnUiThread(() =>
+            {
+                AlertDialog alert = new AlertDialog.Builder(activity).Create();
+                alert.SetTitle(titleString);
+                alert.SetMessage(descString);
+                alert.SetButton("ok", (sender, args) =>
+                {
+                    alert.Dismiss();
+                });
+                alert.Show();
+            });
+
+        }
 
         
 

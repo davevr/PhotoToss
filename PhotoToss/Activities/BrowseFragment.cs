@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace PhotoToss
 {
-    public class BrowseFragment : Fragment
+    public class BrowseFragment : Android.Support.V4.App.Fragment
     {
         public MainActivity MainPage { get; set; }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

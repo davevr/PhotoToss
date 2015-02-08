@@ -2,12 +2,28 @@
 
 using Android.Graphics;
 using Android.Media;
-
+using System.Net;
 
 namespace PhotoToss
 {
 	public static class BitmapHelper
 	{
+        public static Bitmap GetImageBitmapFromUrl(string url)
+        {
+            Bitmap imageBitmap = null;
+
+            using (var webClient = new WebClient())
+            {
+                var imageBytes = webClient.DownloadData(url);
+                if (imageBytes != null && imageBytes.Length > 0)
+                {
+                    imageBitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
+                }
+            }
+
+            return imageBitmap;
+        }
+
 		public static Bitmap LoadAndResizeBitmap(this string fileName, int maxSize)
 		{
 			// First we get the the dimensions of the file on disk
@@ -57,6 +73,13 @@ namespace PhotoToss
 			} else
 				return resizedBitmap;
 		}
+
+        public static Bitmap LoadAndCropBitmap(this string fileName, int targetSize)
+        {
+            Bitmap theMap = LoadAndResizeBitmap(fileName, targetSize);
+            return ThumbnailUtils.ExtractThumbnail(theMap, targetSize, targetSize);
+
+        }
 	}
 }
 

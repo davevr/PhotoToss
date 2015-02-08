@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace PhotoToss
 {
-    public class StatsFragment : Fragment
+    public class StatsFragment : Android.Support.V4.App.Fragment
     {
 
         public MainActivity MainPage { get; set; }

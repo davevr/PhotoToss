@@ -1392,196 +1392,202 @@ namespace PhotoToss
 			public const int car = 2130837555;
 			
 			// aapt resource value: 0x7f020034
-			public const int common_full_open_on_phone = 2130837556;
+			public const int circleframe = 2130837556;
 			
 			// aapt resource value: 0x7f020035
-			public const int common_ic_googleplayservices = 2130837557;
+			public const int common_full_open_on_phone = 2130837557;
 			
 			// aapt resource value: 0x7f020036
-			public const int common_signin_btn_icon_dark = 2130837558;
+			public const int common_ic_googleplayservices = 2130837558;
 			
 			// aapt resource value: 0x7f020037
-			public const int common_signin_btn_icon_disabled_dark = 2130837559;
+			public const int common_signin_btn_icon_dark = 2130837559;
 			
 			// aapt resource value: 0x7f020038
-			public const int common_signin_btn_icon_disabled_focus_dark = 2130837560;
+			public const int common_signin_btn_icon_disabled_dark = 2130837560;
 			
 			// aapt resource value: 0x7f020039
-			public const int common_signin_btn_icon_disabled_focus_light = 2130837561;
+			public const int common_signin_btn_icon_disabled_focus_dark = 2130837561;
 			
 			// aapt resource value: 0x7f02003a
-			public const int common_signin_btn_icon_disabled_light = 2130837562;
+			public const int common_signin_btn_icon_disabled_focus_light = 2130837562;
 			
 			// aapt resource value: 0x7f02003b
-			public const int common_signin_btn_icon_focus_dark = 2130837563;
+			public const int common_signin_btn_icon_disabled_light = 2130837563;
 			
 			// aapt resource value: 0x7f02003c
-			public const int common_signin_btn_icon_focus_light = 2130837564;
+			public const int common_signin_btn_icon_focus_dark = 2130837564;
 			
 			// aapt resource value: 0x7f02003d
-			public const int common_signin_btn_icon_light = 2130837565;
+			public const int common_signin_btn_icon_focus_light = 2130837565;
 			
 			// aapt resource value: 0x7f02003e
-			public const int common_signin_btn_icon_normal_dark = 2130837566;
+			public const int common_signin_btn_icon_light = 2130837566;
 			
 			// aapt resource value: 0x7f02003f
-			public const int common_signin_btn_icon_normal_light = 2130837567;
+			public const int common_signin_btn_icon_normal_dark = 2130837567;
 			
 			// aapt resource value: 0x7f020040
-			public const int common_signin_btn_icon_pressed_dark = 2130837568;
+			public const int common_signin_btn_icon_normal_light = 2130837568;
 			
 			// aapt resource value: 0x7f020041
-			public const int common_signin_btn_icon_pressed_light = 2130837569;
+			public const int common_signin_btn_icon_pressed_dark = 2130837569;
 			
 			// aapt resource value: 0x7f020042
-			public const int common_signin_btn_text_dark = 2130837570;
+			public const int common_signin_btn_icon_pressed_light = 2130837570;
 			
 			// aapt resource value: 0x7f020043
-			public const int common_signin_btn_text_disabled_dark = 2130837571;
+			public const int common_signin_btn_text_dark = 2130837571;
 			
 			// aapt resource value: 0x7f020044
-			public const int common_signin_btn_text_disabled_focus_dark = 2130837572;
+			public const int common_signin_btn_text_disabled_dark = 2130837572;
 			
 			// aapt resource value: 0x7f020045
-			public const int common_signin_btn_text_disabled_focus_light = 2130837573;
+			public const int common_signin_btn_text_disabled_focus_dark = 2130837573;
 			
 			// aapt resource value: 0x7f020046
-			public const int common_signin_btn_text_disabled_light = 2130837574;
+			public const int common_signin_btn_text_disabled_focus_light = 2130837574;
 			
 			// aapt resource value: 0x7f020047
-			public const int common_signin_btn_text_focus_dark = 2130837575;
+			public const int common_signin_btn_text_disabled_light = 2130837575;
 			
 			// aapt resource value: 0x7f020048
-			public const int common_signin_btn_text_focus_light = 2130837576;
+			public const int common_signin_btn_text_focus_dark = 2130837576;
 			
 			// aapt resource value: 0x7f020049
-			public const int common_signin_btn_text_light = 2130837577;
+			public const int common_signin_btn_text_focus_light = 2130837577;
 			
 			// aapt resource value: 0x7f02004a
-			public const int common_signin_btn_text_normal_dark = 2130837578;
+			public const int common_signin_btn_text_light = 2130837578;
 			
 			// aapt resource value: 0x7f02004b
-			public const int common_signin_btn_text_normal_light = 2130837579;
+			public const int common_signin_btn_text_normal_dark = 2130837579;
 			
 			// aapt resource value: 0x7f02004c
-			public const int common_signin_btn_text_pressed_dark = 2130837580;
+			public const int common_signin_btn_text_normal_light = 2130837580;
 			
 			// aapt resource value: 0x7f02004d
-			public const int common_signin_btn_text_pressed_light = 2130837581;
+			public const int common_signin_btn_text_pressed_dark = 2130837581;
 			
 			// aapt resource value: 0x7f02004e
-			public const int ic_announcement_black_48dp = 2130837582;
+			public const int common_signin_btn_text_pressed_light = 2130837582;
 			
 			// aapt resource value: 0x7f02004f
-			public const int ic_camera = 2130837583;
+			public const int ic_announcement_black_48dp = 2130837583;
 			
 			// aapt resource value: 0x7f020050
-			public const int ic_catch = 2130837584;
+			public const int ic_camera = 2130837584;
 			
 			// aapt resource value: 0x7f020051
-			public const int ic_delete_black_48dp = 2130837585;
+			public const int ic_catch = 2130837585;
 			
 			// aapt resource value: 0x7f020052
-			public const int ic_help = 2130837586;
+			public const int ic_delete_black_48dp = 2130837586;
 			
 			// aapt resource value: 0x7f020053
-			public const int ic_notify_color = 2130837587;
+			public const int ic_help = 2130837587;
 			
 			// aapt resource value: 0x7f020054
-			public const int ic_notify_white = 2130837588;
+			public const int ic_notify_color = 2130837588;
 			
 			// aapt resource value: 0x7f020055
-			public const int ic_plusone_medium_off_client = 2130837589;
+			public const int ic_notify_white = 2130837589;
 			
 			// aapt resource value: 0x7f020056
-			public const int ic_plusone_small_off_client = 2130837590;
+			public const int ic_plusone_medium_off_client = 2130837590;
 			
 			// aapt resource value: 0x7f020057
-			public const int ic_plusone_standard_off_client = 2130837591;
+			public const int ic_plusone_small_off_client = 2130837591;
 			
 			// aapt resource value: 0x7f020058
-			public const int ic_plusone_tall_off_client = 2130837592;
+			public const int ic_plusone_standard_off_client = 2130837592;
 			
 			// aapt resource value: 0x7f020059
-			public const int ic_restore_black_48dp = 2130837593;
+			public const int ic_plusone_tall_off_client = 2130837593;
 			
 			// aapt resource value: 0x7f02005a
-			public const int ic_room_black_48dp = 2130837594;
+			public const int ic_restore_black_48dp = 2130837594;
 			
 			// aapt resource value: 0x7f02005b
-			public const int ic_settings = 2130837595;
+			public const int ic_room_black_48dp = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int ic_star_rate_black_48dp = 2130837596;
+			public const int ic_settings = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int ic_supervisor_account_black_48dp = 2130837597;
+			public const int ic_star_rate_black_48dp = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int ic_toss = 2130837598;
+			public const int ic_supervisor_account_black_48dp = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int iconNoBorder = 2130837599;
+			public const int ic_toss = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int mr_ic_audio_vol = 2130837600;
+			public const int iconNoBorder = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int mr_ic_media_route_connecting_holo_dark = 2130837601;
+			public const int mr_ic_audio_vol = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int mr_ic_media_route_connecting_holo_light = 2130837602;
+			public const int mr_ic_media_route_connecting_holo_dark = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int mr_ic_media_route_disabled_holo_dark = 2130837603;
+			public const int mr_ic_media_route_connecting_holo_light = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int mr_ic_media_route_disabled_holo_light = 2130837604;
+			public const int mr_ic_media_route_disabled_holo_dark = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int mr_ic_media_route_holo_dark = 2130837605;
+			public const int mr_ic_media_route_disabled_holo_light = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int mr_ic_media_route_holo_light = 2130837606;
+			public const int mr_ic_media_route_holo_dark = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int mr_ic_media_route_off_holo_dark = 2130837607;
+			public const int mr_ic_media_route_holo_light = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int mr_ic_media_route_off_holo_light = 2130837608;
+			public const int mr_ic_media_route_off_holo_dark = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int mr_ic_media_route_on_0_holo_dark = 2130837609;
+			public const int mr_ic_media_route_off_holo_light = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int mr_ic_media_route_on_0_holo_light = 2130837610;
+			public const int mr_ic_media_route_on_0_holo_dark = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int mr_ic_media_route_on_1_holo_dark = 2130837611;
+			public const int mr_ic_media_route_on_0_holo_light = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int mr_ic_media_route_on_1_holo_light = 2130837612;
+			public const int mr_ic_media_route_on_1_holo_dark = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int mr_ic_media_route_on_2_holo_dark = 2130837613;
+			public const int mr_ic_media_route_on_1_holo_light = 2130837613;
 			
 			// aapt resource value: 0x7f02006e
-			public const int mr_ic_media_route_on_2_holo_light = 2130837614;
+			public const int mr_ic_media_route_on_2_holo_dark = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int mr_ic_media_route_on_holo_dark = 2130837615;
+			public const int mr_ic_media_route_on_2_holo_light = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int mr_ic_media_route_on_holo_light = 2130837616;
+			public const int mr_ic_media_route_on_holo_dark = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int powered_by_google_dark = 2130837617;
+			public const int mr_ic_media_route_on_holo_light = 2130837617;
 			
 			// aapt resource value: 0x7f020072
-			public const int powered_by_google_light = 2130837618;
+			public const int powered_by_google_dark = 2130837618;
 			
 			// aapt resource value: 0x7f020073
-			public const int tosstopus = 2130837619;
+			public const int powered_by_google_light = 2130837619;
+			
+			// aapt resource value: 0x7f020074
+			public const int tosstopus = 2130837620;
+			
+			// aapt resource value: 0x7f020075
+			public const int unknown_octopus = 2130837621;
 			
 			static Drawable()
 			{
@@ -1596,32 +1602,32 @@ namespace PhotoToss
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0a007e
-			public const int AboutBtn = 2131361918;
+			// aapt resource value: 0x7f0a0084
+			public const int AboutBtn = 2131361924;
 			
-			// aapt resource value: 0x7f0a0073
-			public const int AddTagBtn = 2131361907;
+			// aapt resource value: 0x7f0a0078
+			public const int AddTagBtn = 2131361912;
 			
-			// aapt resource value: 0x7f0a007c
-			public const int CatchButton = 2131361916;
+			// aapt resource value: 0x7f0a0082
+			public const int CatchButton = 2131361922;
 			
 			// aapt resource value: 0x7f0a0054
 			public const int ItemName = 2131361876;
 			
-			// aapt resource value: 0x7f0a007a
-			public const int MainMenu = 2131361914;
+			// aapt resource value: 0x7f0a0080
+			public const int MainMenu = 2131361920;
 			
-			// aapt resource value: 0x7f0a0072
-			public const int NewTagText = 2131361906;
+			// aapt resource value: 0x7f0a0077
+			public const int NewTagText = 2131361911;
 			
-			// aapt resource value: 0x7f0a007b
-			public const int PhotoButton = 2131361915;
+			// aapt resource value: 0x7f0a0081
+			public const int PhotoButton = 2131361921;
 			
-			// aapt resource value: 0x7f0a007d
-			public const int SettingsBtn = 2131361917;
+			// aapt resource value: 0x7f0a0083
+			public const int SettingsBtn = 2131361923;
 			
-			// aapt resource value: 0x7f0a0074
-			public const int UploadBtn = 2131361908;
+			// aapt resource value: 0x7f0a0079
+			public const int UploadBtn = 2131361913;
 			
 			// aapt resource value: 0x7f0a0045
 			public const int action_bar = 2131361861;
@@ -1674,8 +1680,8 @@ namespace PhotoToss
 			// aapt resource value: 0x7f0a000f
 			public const int always = 2131361807;
 			
-			// aapt resource value: 0x7f0a006f
-			public const int aztekView = 2131361903;
+			// aapt resource value: 0x7f0a0074
+			public const int aztekView = 2131361908;
 			
 			// aapt resource value: 0x7f0a000a
 			public const int beginning = 2131361802;
@@ -1683,8 +1689,14 @@ namespace PhotoToss
 			// aapt resource value: 0x7f0a002d
 			public const int book_now = 2131361837;
 			
-			// aapt resource value: 0x7f0a0078
-			public const int buttonZxingFlash = 2131361912;
+			// aapt resource value: 0x7f0a0067
+			public const int btn_finish = 2131361895;
+			
+			// aapt resource value: 0x7f0a0063
+			public const int btn_profileimage = 2131361891;
+			
+			// aapt resource value: 0x7f0a007e
+			public const int buttonZxingFlash = 2131361918;
 			
 			// aapt resource value: 0x7f0a0028
 			public const int buyButton = 2131361832;
@@ -1707,11 +1719,11 @@ namespace PhotoToss
 			// aapt resource value: 0x7f0a0011
 			public const int collapseActionView = 2131361809;
 			
-			// aapt resource value: 0x7f0a0079
-			public const int contentFrame = 2131361913;
+			// aapt resource value: 0x7f0a007f
+			public const int contentFrame = 2131361919;
 			
-			// aapt resource value: 0x7f0a006d
-			public const int createBtn = 2131361901;
+			// aapt resource value: 0x7f0a0072
+			public const int createBtn = 2131361906;
 			
 			// aapt resource value: 0x7f0a0043
 			public const int decor_content_parent = 2131361859;
@@ -1737,11 +1749,11 @@ namespace PhotoToss
 			// aapt resource value: 0x7f0a0047
 			public const int edit_query = 2131361863;
 			
-			// aapt resource value: 0x7f0a006c
-			public const int emailAddrField = 2131361900;
+			// aapt resource value: 0x7f0a0071
+			public const int emailAddrField = 2131361905;
 			
-			// aapt resource value: 0x7f0a006b
-			public const int emailPrompt = 2131361899;
+			// aapt resource value: 0x7f0a0070
+			public const int emailPrompt = 2131361904;
 			
 			// aapt resource value: 0x7f0a000c
 			public const int end = 2131361804;
@@ -1751,6 +1763,9 @@ namespace PhotoToss
 			
 			// aapt resource value: 0x7f0a003c
 			public const int expanded_menu = 2131361852;
+			
+			// aapt resource value: 0x7f0a0066
+			public const int field_nickname = 2131361894;
 			
 			// aapt resource value: 0x7f0a0057
 			public const int fragmentContainer = 2131361879;
@@ -1785,20 +1800,23 @@ namespace PhotoToss
 			// aapt resource value: 0x7f0a005e
 			public const int imageView = 2131361886;
 			
-			// aapt resource value: 0x7f0a0066
-			public const int imageView1 = 2131361894;
+			// aapt resource value: 0x7f0a006b
+			public const int imageView1 = 2131361899;
 			
 			// aapt resource value: 0x7f0a0055
 			public const int imagesView = 2131361877;
 			
+			// aapt resource value: 0x7f0a0062
+			public const int img_profileImage = 2131361890;
+			
 			// aapt resource value: 0x7f0a0058
 			public const int left_drawer = 2131361880;
 			
-			// aapt resource value: 0x7f0a0065
-			public const int linearLayout1 = 2131361893;
+			// aapt resource value: 0x7f0a0064
+			public const int linearLayout1 = 2131361892;
 			
-			// aapt resource value: 0x7f0a0076
-			public const int linearLayout2 = 2131361910;
+			// aapt resource value: 0x7f0a007c
+			public const int linearLayout2 = 2131361916;
 			
 			// aapt resource value: 0x7f0a0001
 			public const int listMode = 2131361793;
@@ -1839,17 +1857,20 @@ namespace PhotoToss
 			// aapt resource value: 0x7f0a0000
 			public const int normal = 2131361792;
 			
-			// aapt resource value: 0x7f0a0068
-			public const int password = 2131361896;
+			// aapt resource value: 0x7f0a007a
+			public const int pager = 2131361914;
 			
-			// aapt resource value: 0x7f0a006a
-			public const int password2 = 2131361898;
+			// aapt resource value: 0x7f0a006d
+			public const int password = 2131361901;
+			
+			// aapt resource value: 0x7f0a006f
+			public const int password2 = 2131361903;
 			
 			// aapt resource value: 0x7f0a0061
 			public const int popoutMenuItem = 2131361889;
 			
-			// aapt resource value: 0x7f0a006e
-			public const int prepSignIn = 2131361902;
+			// aapt resource value: 0x7f0a0073
+			public const int prepSignIn = 2131361907;
 			
 			// aapt resource value: 0x7f0a0025
 			public const int production = 2131361829;
@@ -1866,8 +1887,8 @@ namespace PhotoToss
 			// aapt resource value: 0x7f0a003f
 			public const int radio = 2131361855;
 			
-			// aapt resource value: 0x7f0a0062
-			public const int registerButton = 2131361890;
+			// aapt resource value: 0x7f0a0068
+			public const int registerButton = 2131361896;
 			
 			// aapt resource value: 0x7f0a0026
 			public const int sandbox = 2131361830;
@@ -1875,8 +1896,8 @@ namespace PhotoToss
 			// aapt resource value: 0x7f0a0020
 			public const int satellite = 2131361824;
 			
-			// aapt resource value: 0x7f0a0064
-			public const int scrollView1 = 2131361892;
+			// aapt resource value: 0x7f0a006a
+			public const int scrollView1 = 2131361898;
 			
 			// aapt resource value: 0x7f0a0049
 			public const int search_badge = 2131361865;
@@ -1923,8 +1944,8 @@ namespace PhotoToss
 			// aapt resource value: 0x7f0a0007
 			public const int showTitle = 2131361799;
 			
-			// aapt resource value: 0x7f0a0069
-			public const int signInBtn = 2131361897;
+			// aapt resource value: 0x7f0a006e
+			public const int signInBtn = 2131361902;
 			
 			// aapt resource value: 0x7f0a001c
 			public const int split_action_bar = 2131361820;
@@ -1938,8 +1959,8 @@ namespace PhotoToss
 			// aapt resource value: 0x7f0a0002
 			public const int tabMode = 2131361794;
 			
-			// aapt resource value: 0x7f0a0071
-			public const int tagsField = 2131361905;
+			// aapt resource value: 0x7f0a0076
+			public const int tagsField = 2131361910;
 			
 			// aapt resource value: 0x7f0a0021
 			public const int terrain = 2131361825;
@@ -1947,20 +1968,23 @@ namespace PhotoToss
 			// aapt resource value: 0x7f0a0053
 			public const int textView1 = 2131361875;
 			
-			// aapt resource value: 0x7f0a0075
-			public const int textView2 = 2131361909;
+			// aapt resource value: 0x7f0a007b
+			public const int textView2 = 2131361915;
 			
-			// aapt resource value: 0x7f0a0077
-			public const int textView3 = 2131361911;
+			// aapt resource value: 0x7f0a007d
+			public const int textView3 = 2131361917;
 			
 			// aapt resource value: 0x7f0a003b
 			public const int title = 2131361851;
 			
-			// aapt resource value: 0x7f0a0070
-			public const int tossButton = 2131361904;
+			// aapt resource value: 0x7f0a0075
+			public const int tossButton = 2131361909;
 			
-			// aapt resource value: 0x7f0a0063
-			public const int unregisterButton = 2131361891;
+			// aapt resource value: 0x7f0a0065
+			public const int txt_nickname = 2131361893;
+			
+			// aapt resource value: 0x7f0a0069
+			public const int unregisterButton = 2131361897;
 			
 			// aapt resource value: 0x7f0a001d
 			public const int up = 2131361821;
@@ -1968,8 +1992,8 @@ namespace PhotoToss
 			// aapt resource value: 0x7f0a0004
 			public const int useLogo = 2131361796;
 			
-			// aapt resource value: 0x7f0a0067
-			public const int usernameField = 2131361895;
+			// aapt resource value: 0x7f0a006c
+			public const int usernameField = 2131361900;
 			
 			// aapt resource value: 0x7f0a0010
 			public const int withText = 2131361808;
@@ -2130,13 +2154,16 @@ namespace PhotoToss
 			public const int UploadActivity = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int ZxingOverlay = 2130903080;
+			public const int ViewPager = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int zxingscanneractivitylayout = 2130903081;
+			public const int ZxingOverlay = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int zxingscannerfragmentlayout = 2130903082;
+			public const int zxingscanneractivitylayout = 2130903082;
+			
+			// aapt resource value: 0x7f03002b
+			public const int zxingscannerfragmentlayout = 2130903083;
 			
 			static Layout()
 			{
