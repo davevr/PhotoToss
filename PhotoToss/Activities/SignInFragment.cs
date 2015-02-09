@@ -164,7 +164,7 @@ namespace PhotoToss
 
         private void CreateAccountResultCallback(User result)
         {
-            if (result == null)
+            if (result != null)
             {
                 MainActivity.analytics.PostRegisterUser();
                 Activity.RunOnUiThread(() =>

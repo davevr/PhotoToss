@@ -65,6 +65,20 @@ namespace PhotoToss
             mPager.CurrentItem++;
         }
 
+        protected override void OnActivityResult(int requestCode, Android.App.Result resultCode, Intent data)
+        {
+            if (resultCode == Android.App.Result.Ok)
+            {
+                switch (requestCode)
+                {
+
+
+                }
+            }
+            base.OnActivityResult(requestCode, resultCode, data);
+        }
+
+
         private class ScreenSlidePageAdapter : FragmentStatePagerAdapter
         {
             private SignInFragment page1 = null;

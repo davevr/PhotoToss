@@ -1,24 +1,24 @@
 ﻿<Properties StartupItem="PhotoToss.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.0467ad8243839436" />
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.Nexus_5" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Core/PhotoTossRest.cs">
     <Files>
-      <File FileName="MainActivity.cs" Line="31" Column="31" />
+      <File FileName="MainActivity.cs" Line="1" Column="1" />
       <File FileName="Core/Utilities.cs" Line="1" Column="1" />
       <File FileName="Core/PhotoTossRest.cs" Line="1" Column="1" />
       <File FileName="Activities/TossActivity.cs" Line="1" Column="1" />
       <File FileName="Activities/UploadActivity.cs" Line="1" Column="1" />
       <File FileName="HelperClasses/StreamHelper.cs" Line="1" Column="1" />
-      <File FileName="Activities/FirstRunActivity.cs" Line="1" Column="1" />
-      <File FileName="Activities/HomeFragment.cs" Line="1" Column="1" />
-      <File FileName="HelperClasses/BitmapHelper.cs" Line="1" Column="1" />
-      <File FileName="HelperClasses/ScaleImageView.cs" Line="1" Column="1" />
-      <File FileName="Core/PhotoRecord.cs" Line="1" Column="1" />
+      <File FileName="Activities/SignInFragment.cs" Line="25" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="PhotoToss" expanded="True">
             <Node name="ComponentReferenceFolder" expanded="True" />
+            <Node name="Activities" expanded="True" />
+            <Node name="Core" expanded="True">
+              <Node name="PhotoTossRest.cs" selected="True" />
+            </Node>
             <Node name="Properties" expanded="True" />
           </Node>
         </State>
@@ -30,6 +30,8 @@
       <Breakpoint file="/Users/ultradad/Github/PhotoToss/PhotoToss/Activities/SignInActivity.cs" line="235" column="1" />
       <Breakpoint file="/Users/ultradad/Github/PhotoToss/PhotoToss/Activities/HomeFragment.cs" line="177" column="1" />
       <Breakpoint file="/Users/ultradad/Github/PhotoToss/PhotoToss/Activities/HomeFragment.cs" line="74" column="1" />
+      <Breakpoint file="/Users/davevr/Github/PhotoToss/PhotoToss/Activities/FirstRunActivity.cs" line="70" column="1" />
+      <Breakpoint file="/Users/davevr/Github/PhotoToss/PhotoToss/Core/PhotoTossRest.cs" line="112" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
