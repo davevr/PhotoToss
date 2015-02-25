@@ -6,29 +6,37 @@ namespace PhotoToss.Core
 {
     public class PhotoRecord
     {
+		// unique to every photo
         public long id {get; set;}
-        public string caption { get; set; }
+		public string ownername { get; set; }
+		public long ownerid { get; set; }
+
+		// copied from source image
+		public string caption { get; set; }
+		public List<string> tags { get; set; }
+		public DateTime created { get; set; }
+		public double createdlat { get; set; }
+		public double createdlong { get; set; }
+		public string imageUrl { get; set; }
+		public string thumbnailurl { get; set; }
+
+
+		// completed on a toss of a new image
+		public long originid { get; set; }
+		public long parentid { get; set;}
+		public string catchUrl { get; set; }
+		public double receivedlong { get; set; }
+		public double receivedlat { get; set; }
+		public string receivedcaption { get; set; }
+		public DateTime received { get; set; }
+		public long tosserid { get; set; }
+
+
+		// updated after a toss
         public long totalshares { get; set; }
-        public string ownername { get; set; }
-        public long ownerid { get; set; }
-        public List<string> tags { get; set; }
-        public string sharedfromname { get; set; }
-        public string sharedfromid { get; set; }
-        public int myshares { get; set; }
-        public int mysharesessions { get; set; }
-        public DateTime received { get; set; }
-        public DateTime created { get; set; }
-        public DateTime lastsharedbyuser { get; set; }
-        public DateTime lastshared { get; set; }
-        public double createdlat { get; set; }
-        public double receivedlong { get; set; }
-        public double createdlong { get; set; }
-        public double receivedlat { get; set; }
-        public string receivedcaption { get; set; }
-        public string receivedtags { get; set; }
-        public string imageUrl { get; set; }
-        public string catchUrl { get; set; }
-        public string thumbnailurl { get; set; }
+		public int tossCount { get; set; }
+		public DateTime lastshared { get; set; }
+
         private object cachedImage = null;
         private object cachedCatchImage = null;
 
@@ -42,14 +50,9 @@ namespace PhotoToss.Core
             newRec.ownerid = 0;
             newRec.ownername = "davevr";
             newRec.tags = new List<string>() { "sheep", "nose", "fred" };
-            newRec.sharedfromid = "0";
-            newRec.sharedfromname = "davevr";
-            newRec.mysharesessions = 15;
-            newRec.myshares = 89;
             newRec.received = DateTime.Now;
             newRec.created = DateTime.Now;
             newRec.lastshared = DateTime.Now;
-            newRec.lastsharedbyuser = DateTime.Now;
             newRec.createdlat = 34.0824;
             newRec.createdlong = -118.3941;
             newRec.receivedlat = 34.0824;

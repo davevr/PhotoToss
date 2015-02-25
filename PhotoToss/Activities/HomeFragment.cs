@@ -174,21 +174,21 @@ namespace PhotoToss
 				userView = curView.FindViewById<ImageView> (Resource.Id.profileImage);
                 captionText = curView.FindViewById<TextView>(Resource.Id.captionText);
                 imageView.SetScaleType(ImageView.ScaleType.CenterCrop);
-				if (false) {//(curRec.ownerid == PhotoTossRest.Instance.CurrentUser.id) {
+				if ((curRec.tosserid == 0) || (curRec.tosserid == PhotoTossRest.Instance.CurrentUser.id)) {
+					// this is an original
 					userView.Visibility = ViewStates.Gone;
 				} else {
-					String imageUrl = PhotoTossRest.Instance.CurrentUser.imageurl;
-					if (String.IsNullOrEmpty (imageUrl)) {
-						imageUrl = "https://s3-us-west-2.amazonaws.com/app.goheard.com/images/unknown-user.png";
-					} else
-						imageUrl += "=s128-c";
+					PhotoTossRest.Instance.GetUserProfileImage (curRec.tosserid, (imageUrl) => {
+						if (String.IsNullOrEmpty (imageUrl)) {
+							imageUrl = "https://s3-us-west-2.amazonaws.com/app.goheard.com/images/unknown-user.png";
+						} else
+							imageUrl += "=s128-c";
 
-					userView.Visibility = ViewStates.Visible;
-					Bitmap userBitMap = BitmapHelper.GetImageBitmapFromUrl(imageUrl);
-					CircleDrawable myCircle = new CircleDrawable (userBitMap);
-					userView.SetImageDrawable (myCircle);
-					//profileImageView.SetImageDrawable(new CircleDrawable(userBitMap));
-					//Koush.UrlImageViewHelper.SetUrlDrawable (userView, curRec.catchUrl + "=s" + profileWidth.ToString(), Resource.Drawable.ic_camera);
+						userView.Visibility = ViewStates.Visible;
+						Bitmap userBitMap = BitmapHelper.GetImageBitmapFromUrl(imageUrl);
+						CircleDrawable myCircle = new CircleDrawable (userBitMap);
+						userView.SetImageDrawable (myCircle);
+					});
 				}
                 captionText.Text = curRec.caption;
 				Koush.UrlImageViewHelper.SetUrlDrawable (imageView, curRec.imageUrl + "=s" + itemWidth.ToString(), Resource.Drawable.ic_camera);
