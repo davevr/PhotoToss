@@ -8,6 +8,8 @@ namespace PhotoToss
 {
 	public static class BitmapHelper
 	{
+        public delegate void Bitmap_callback(Bitmap theResult);
+
         public static Bitmap GetImageBitmapFromUrl(string url)
         {
             Bitmap imageBitmap = null;
@@ -22,6 +24,30 @@ namespace PhotoToss
             }
 
             return imageBitmap;
+        }
+
+
+        public static void GetImageBitmapFromUrlAsync(string url, Bitmap_callback callback)
+        {
+            Bitmap imageBitmap = null;
+
+            WebClient webClient = new WebClient();
+            webClient.DownloadDataCompleted += (obj, e) =>
+                {
+                    var imageBytes = e.Result;
+                    if (imageBytes != null && imageBytes.Length > 0)
+                    {
+                        imageBitmap = BitmapFactory.DecodeByteArray(imageBytes, 0, imageBytes.Length);
+                        callback(imageBitmap);
+
+                    }
+                    else callback(null);
+                    webClient.Dispose();
+                };
+
+            Uri uri = new UriBuilder(url).Uri;
+
+            webClient.DownloadDataAsync(uri);
         }
 
 		public static Bitmap LoadAndResizeBitmap(this string fileName, int maxSize)

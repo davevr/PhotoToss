@@ -52,6 +52,28 @@ namespace PhotoToss.Core
 			get { return _currentUser; }
 		}
 
+		public void GetUserProfileImage(long userId, String_callback callback)
+		{
+			string fullURL = "user/info/";
+
+			RestRequest request = new RestRequest(fullURL, Method.GET);
+			request.AddParameter("id", userId);
+
+			apiClient.ExecuteAsync<User>(request, (response) =>
+				{
+					if (response == null)
+						callback(null);
+					else if (response.StatusCode == HttpStatusCode.OK)
+					{
+						User theUser = response.Data;
+
+						callback(theUser.imageurl);
+					}
+					else
+						callback(null);
+				});
+		}
+
         public void GetUserImages(PhotoRecordList_callback callback)
         {
 			string fullURL = "images";

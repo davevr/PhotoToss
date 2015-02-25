@@ -174,21 +174,30 @@ namespace PhotoToss
 				userView = curView.FindViewById<ImageView> (Resource.Id.profileImage);
                 captionText = curView.FindViewById<TextView>(Resource.Id.captionText);
                 imageView.SetScaleType(ImageView.ScaleType.CenterCrop);
-				if ((curRec.tosserid == 0) || (curRec.tosserid == PhotoTossRest.Instance.CurrentUser.id)) {
-					// this is an original
-					userView.Visibility = ViewStates.Gone;
-				} else {
-					PhotoTossRest.Instance.GetUserProfileImage (curRec.tosserid, (imageUrl) => {
-						if (String.IsNullOrEmpty (imageUrl)) {
-							imageUrl = "https://s3-us-west-2.amazonaws.com/app.goheard.com/images/unknown-user.png";
-						} else
-							imageUrl += "=s128-c";
 
-						userView.Visibility = ViewStates.Visible;
-						Bitmap userBitMap = BitmapHelper.GetImageBitmapFromUrl(imageUrl);
-						CircleDrawable myCircle = new CircleDrawable (userBitMap);
-						userView.SetImageDrawable (myCircle);
-					});
+                userView.Visibility = ViewStates.Gone;
+				long tosserId = curRec.tosserid;
+				if ((tosserId != 0) && (tosserId != PhotoTossRest.Instance.CurrentUser.id))
+				{
+					PhotoTossRest.Instance.GetUserProfileImage (curRec.tosserid, (imageUrl) => 
+						{
+							if (String.IsNullOrEmpty (imageUrl))
+								imageUrl = "https://s3-us-west-2.amazonaws.com/app.goheard.com/images/unknown-user.png";
+							else
+								imageUrl += "=s128-c";
+
+		                    BitmapHelper.GetImageBitmapFromUrlAsync(imageUrl, (theBitmap) =>
+		                        {
+		                            ((Activity)context).RunOnUiThread(() =>
+		                                {
+		                                    userView.Visibility = ViewStates.Visible;
+		                                    Bitmap userBitMap = BitmapHelper.GetImageBitmapFromUrl(imageUrl);
+		                                    CircleDrawable myCircle = new CircleDrawable(userBitMap);
+		                                    userView.SetImageDrawable(myCircle);
+		                                });
+
+		                        });
+						});
 				}
                 captionText.Text = curRec.caption;
 				Koush.UrlImageViewHelper.SetUrlDrawable (imageView, curRec.imageUrl + "=s" + itemWidth.ToString(), Resource.Drawable.ic_camera);
