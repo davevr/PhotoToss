@@ -174,21 +174,26 @@ namespace PhotoToss
 				userView = curView.FindViewById<ImageView> (Resource.Id.profileImage);
                 captionText = curView.FindViewById<TextView>(Resource.Id.captionText);
                 imageView.SetScaleType(ImageView.ScaleType.CenterCrop);
-				if (false) {//(curRec.ownerid == PhotoTossRest.Instance.CurrentUser.id) {
-					userView.Visibility = ViewStates.Gone;
-				} else {
+                userView.Visibility = ViewStates.Gone;
+				if (true)//curRec.ownerid != PhotoTossRest.Instance.CurrentUser.id)
+                {
 					String imageUrl = PhotoTossRest.Instance.CurrentUser.imageurl;
-					if (String.IsNullOrEmpty (imageUrl)) {
+					if (String.IsNullOrEmpty (imageUrl))
 						imageUrl = "https://s3-us-west-2.amazonaws.com/app.goheard.com/images/unknown-user.png";
-					} else
+					else
 						imageUrl += "=s128-c";
 
-					userView.Visibility = ViewStates.Visible;
-					Bitmap userBitMap = BitmapHelper.GetImageBitmapFromUrl(imageUrl);
-					CircleDrawable myCircle = new CircleDrawable (userBitMap);
-					userView.SetImageDrawable (myCircle);
-					//profileImageView.SetImageDrawable(new CircleDrawable(userBitMap));
-					//Koush.UrlImageViewHelper.SetUrlDrawable (userView, curRec.catchUrl + "=s" + profileWidth.ToString(), Resource.Drawable.ic_camera);
+                    BitmapHelper.GetImageBitmapFromUrlAsync(imageUrl, (theBitmap) =>
+                        {
+                            ((Activity)context).RunOnUiThread(() =>
+                                {
+                                    userView.Visibility = ViewStates.Visible;
+                                    Bitmap userBitMap = BitmapHelper.GetImageBitmapFromUrl(imageUrl);
+                                    CircleDrawable myCircle = new CircleDrawable(userBitMap);
+                                    userView.SetImageDrawable(myCircle);
+                                });
+
+                        });
 				}
                 captionText.Text = curRec.caption;
 				Koush.UrlImageViewHelper.SetUrlDrawable (imageView, curRec.imageUrl + "=s" + itemWidth.ToString(), Resource.Drawable.ic_camera);
